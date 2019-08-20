@@ -4,17 +4,17 @@
 
 1. Recognize the basic features and uses of modern **web APIs** & how **FHIR fits** in as a RESTful API.
 
-2. Have a **general understanding** of the FHIR standard for health care data exchange, including an overview of the **history**, **purpose**, **scope**, the **adoption** and **implementation** situation.
+2. Have a general **understanding** of the FHIR standard for health care data exchange, including an overview of the **history**, **purpose**, **scope**, the **adoption** and **implementation** situation.
     * Identify gaps between the spec and its implementations
     * Understand what functionality & features are **NOT** part of FHIR
 
-3. Be aware of major projects, collaborations, implementations, and technologies that use or focus on FHIR (eg. HL7, SMART on FHIR, CDS Hooks, FHIR Bulk Data API, Argonaut,  etc. etc.)
+3. Have a general **awareness** of major **projects**, **collaborations**, **implementations**, and **technologies** that use or focus on FHIR.
 
-4. Work through a simple Jupyter notebook FHIR tutorial that uses FHIR data to implement a simple healthcare risk score calculator for (BMI? )
+4. Work through a FHIR tutorial that **queries** data from a **FHIR endpoint** to implement a simple cardiovascular risk calculator.
 
-5. Know where to access additional resources, readings, tutorials, communities and other related projects for further exploration of FHIR
+5. Be able to explore FHIR independently through provided access to **projects**, **readings**, **tutorials**, and other useful resources
 
-6. Participate in an ideation session on opportuniites for FHIR in the OpenMRS community
+6. Participate in an **ideation session** on opportunities for **FHIR** in the **OpenMRS** community
 
 
 ## So, what is FHIR?
@@ -122,6 +122,10 @@ Some Illustrations of This Concept
 
 ## Provides a foundation for a couple of differnet technologies
 (Quuick run through, w/ a single phrase summary of what each tech is and how each tech uses FHIR)
+
+**
+(eg. HL7, SMART on FHIR, CDS Hooks, FHIR Bulk Data API, Argonaut,  etc. etc.)**
+
 SoF + App Galleries
 
 CDS Hooks
@@ -142,7 +146,11 @@ There's a large difference between the FHIR specifications and the actual implem
 
 ## A quick summary and critical look at FHIR in 2019
 
-# Tutorial Runthrough
+## Tutorial Runthrough
+https://github.com/uw-fhir/fhir-api-tutorial/blob/master/fhir-calculator-notebook.ipynb
+
+## Explore on your own!
+(modified version of https://uw-fhir.github.io/FHIRupUW/)
 
 ## To-Do
 - [ ] Finish rough post outline w/ placeholders where necessary 
@@ -152,3 +160,5 @@ There's a large difference between the FHIR specifications and the actual implem
 - [ ] Do a quick run-through and fix issues (logical, spelling, links, tutorial, etc.)
 - [ ] Publish Talk post by 7am 8/20
 - [ ] Post to Slack
+
+
