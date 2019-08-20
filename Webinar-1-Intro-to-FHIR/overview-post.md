@@ -19,19 +19,49 @@
 
 ## So, what is FHIR?
 
-**FHIR** actually stands for **Fast** **Healthcare** **Interoperability** **Resources**, and, according to the [official summary](http://hl7.org/fhir/summary.html#2.17), is a
+**FHIR** stands for **Fast** **Healthcare** **Interoperability** **Resources**.
 
+According to the [summary in the official documentation](http://hl7.org/fhir/summary.html#2.17), 
+
+FHIR is a
 > "...next generation standards framework created by HL7. FHIR combines the best features of HL7's v2 , HL7 v3  and CDA  product lines while leveraging the **latest web standards** and applying a tight focus on **implementability**."
 > 
 >*source: http://hl7.org/fhir/summary.html#2.17*
 
-So, if we want to understand the FHIR standard a bit better, we should dive a bit into what these `latest web standards` are and how they facilitate "implementability".
+## If FHIR is "next generation", what came before?
 
-### FHIR: A RESTful API
-(Summarize: Basically, FHIR is implemented as a RESTful API, in line with many such APIs around the internet. This summarizess the line above)
+The summary above does not paint a very comprehensive picture of the major health data standards maintained by the [HL7 Organization](http://www.hl7.org/about/index.cfm?ref=nav) before FHIR. If you're interested in a more thorough history lesson about the **HL7 V2, V3, and CDA** standards, let us know. You can also check out these two slide deck and walk-through - and again, send us any questions you might have!
 
-Now, you might wonder: what exactly is an API?
+https://pasteapp.com/p/Ggufyqh11of/s/5m7aiy75
+https://pasteapp.com/p/If8ttW55K0J/s/4q19rk20
 
+
+The main takeaway: previous HL7 standards are still in use today to varying degrees, but FHIR has seen very fast growth and adoption. 
+
+https://github.com/bhi-spring-591-2019/instructors/blob/master/HL7%20and%20XDSToolkit%20walkthrough.md
+
+https://www.healthit.gov/buzz-blog/interoperability/heat-wave-the-u-s-is-poised-to-catch-fhir-in-2019
+
+
+## What about the "web standards" part of the summary?
+
+To understand FHIR better, we'll dive into what the aformentioned `latest web standards` are, how they facilitate `implementability`, and what this `implementability` could mean.
+
+The key point to remember is: FHIR is a **RESTful API**, which puts it in a class of web standards that is very widely used in the tech field to transfer all kinds of data between different applications and systems. 
+
+Some examples you might be familiar with: the [Twitter Search API](https://developer.twitter.com/en/docs/tweets/search/quick-start/premium-30-day), the [Github API](https://developer.github.com/v3/), [IBM's Watson Assistant](https://developer.ibm.com/patterns/watson-conversation-with-ibm-linuxone-systems/) and countless other services provide access to their data through a RESTful API. 
+
+(Slack also has a REST API that you can easily play with - I started doing an analysis of the OpenMRS #fhir channel here if you're interested: https://github.com/pmanko/slack_analysis/blob/master/fhir_channel.ipynb)
+
+### So, FHIR is a RESTful API
+
+But what does that actually mean? 
+
+We'll look into the **RESTful** part later, but first lets focus on APIs, or Application Programming Interfaces.
+
+
+
+e think of an application - any application you can think of - as a hidden box
 (* Basically, if some app/service is though of as a covered box, with lots of different machinery --> hard to add anything / build anything to work with / figure out what the machine really does
 * But if your machine provides some sort of interface: connector that has documentation for available functionality of the connector --> allows interoperability
 * Ideally, you have a universal connector: for example, usbs in many hardware applications; used by most devices, allows for easier interoperability
@@ -65,9 +95,9 @@ In short, resources represent differnt concepts used in healtcare: (patients, cl
 
 - Quickly go over idea of resource, and of GET/PUT/POST/UPDATE
 
-```
-Link out to quick overview of resources
-```
+https://www.hl7.org/fhir/resourcelist.html
+https://www.hl7.org/fhir/operationslist.html#1.5
+
 
 By modeling healthcare concepts as resources and providing? some standard functionality for using these resources, FHIR is essenitally a RESTful API in line with many such APIs out there
 
@@ -146,15 +176,21 @@ There's a large difference between the FHIR specifications and the actual implem
 
 ## A quick summary and critical look at FHIR in 2019
 
+
+
 ## Tutorial Runthrough
 https://github.com/uw-fhir/fhir-api-tutorial/blob/master/fhir-calculator-notebook.ipynb
 
 ## Explore on your own!
 (modified version of https://uw-fhir.github.io/FHIRupUW/)
 
+### Advanced FHIR Topics
+https://pasteapp.com/p/If8ttW55K0J/s/dcbcl3wi
+
+
 ## To-Do
 - [ ] Finish rough post outline w/ placeholders where necessary 
-- [ ] Compare w/ ITECH presentation to identify any gaps
+- [x] Compare w/ ITECH presentation to identify any gaps
 - [ ] Insert and check all out-links
 - [ ] Compile a new slide-deck and insert slides into placeholders
 - [ ] Do a quick run-through and fix issues (logical, spelling, links, tutorial, etc.)
