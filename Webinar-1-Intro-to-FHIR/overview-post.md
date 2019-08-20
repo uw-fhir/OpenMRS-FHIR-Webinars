@@ -35,7 +35,6 @@ The summary above does not paint a very comprehensive picture of the major healt
 https://pasteapp.com/p/Ggufyqh11of/s/5m7aiy75
 https://pasteapp.com/p/If8ttW55K0J/s/4q19rk20
 
-
 The main takeaway: previous HL7 standards are still in use today to varying degrees, but FHIR has seen very fast growth and adoption. 
 
 https://github.com/bhi-spring-591-2019/instructors/blob/master/HL7%20and%20XDSToolkit%20walkthrough.md
@@ -53,50 +52,44 @@ Some examples you might be familiar with: the [Twitter Search API](https://devel
 
 (Slack also has a REST API that you can easily play with - I started doing an analysis of the OpenMRS #fhir channel here if you're interested: https://github.com/pmanko/slack_analysis/blob/master/fhir_channel.ipynb)
 
-### So, FHIR is a RESTful API
+### So, FHIR is a RESTful API...
 
-But what does that actually mean? 
+But what does that actually mean?
 
-We'll look into the **RESTful** part later, but first lets focus on APIs, or Application Programming Interfaces.
+We'll look into the **RESTful** part later, but first lets focus on APIs (or **A**pplication **P**rogramming **I**nterfaces) in general.
 
+Here's a diagram from (this post)[https://learn.g2.com/api] that illustrates this concept "in simple terms":
 
+![https://learn.g2.com/hs-fs/hubfs/what-is-an-API-waiter-example.png?width=1200&name=what-is-an-API-waiter-example.png](https://learn.g2.com/hs-fs/hubfs/what-is-an-API-waiter-example.png?width=1200&name=what-is-an-API-waiter-example.png)
 
-e think of an application - any application you can think of - as a hidden box
-(* Basically, if some app/service is though of as a covered box, with lots of different machinery --> hard to add anything / build anything to work with / figure out what the machine really does
-* But if your machine provides some sort of interface: connector that has documentation for available functionality of the connector --> allows interoperability
-* Ideally, you have a universal connector: for example, usbs in many hardware applications; used by most devices, allows for easier interoperability
-)
+Say you have some app or service - in this case, a kitchen full of chefs that can create and output many exciting dishes. You also have a set of clients - in this case, the hungry customers - who  want to get at the provided services. 
 
-```
-Placeholder for API diagram
-```
+However, these clients might be completely ignorant of how the "kitchen" works, what food it provides, and all the other intricacies of running a restaurant. 
 
+That's where the API/waiter comes in. The waiter acts as an interface for the customers to interact with the kitchen, by translating the needs of the clients into a language the kitchen can understand, and delivering the required services back to the hungry clients. 
 
-APIs provide that sort of interface for services / apps / etc --> break down "official" definition
+Ideally, this API/Waiter provides the customers with an experiance they've come to expect from other such fine establishments, so even though the kitchen might work completely differently, the experience is not unfamiliar. 
 
-```
-Placeholder for example APIs around the web: 
-slack for example!
-```
+So, in summary, an API provides a standardized, (ideally) well-documented, and convenient endpoint for clients to interface with some service. 
 
-```
-Link out to Slack #fhir analysis
-```
+If you want to learn a bit more about APIs, and how they relate to FHIR, check out [Pascal Brandt's](https://talk.openmrs.org/u/pascal/summary) quick API & FHIR tutorial: https://psbrandt.io/fhir/
 
 ### What about the RESTful Part?
 
-The [official FHIR page](http://hl7.org/fhir/summary.html#2.17) introduces another major aspect of FHIR - **Resources** in the next paragraph:
+RESTful APIs are a subclass of Web APIs that define a set of standard **[Operations](https://restful-api-design.readthedocs.io/en/latest/methods.html)** on digital representations of objects called **[Resources](https://restful-api-design.readthedocs.io/en/latest/resources.html)**. 
+
+The [official FHIR page](http://hl7.org/fhir/summary.html#2.17) iillustrates how foundational these two concepts are for the FHIR standard. **Resources** are mentioned in the second paragraph of the summary:
 
 > "FHIR solutions are built from a set of modular components called **Resources**...[that can] easily be assembled into working systems that solve real world clinical and administrative problems..."
 > 
 > *source: http://hl7.org/fhir/summary.html#2.17*
 
-In short, resources represent differnt concepts used in healtcare: (patients, clinical encounters, medications, etc.)
+These resources are defined to represent the various different concepts important in healtcare scenarios, includingpatients, clinical encounters, medications, and so on. 
+
 
 - Quickly go over idea of resource, and of GET/PUT/POST/UPDATE
 
 https://www.hl7.org/fhir/resourcelist.html
-https://www.hl7.org/fhir/operationslist.html#1.5
 
 
 By modeling healthcare concepts as resources and providing? some standard functionality for using these resources, FHIR is essenitally a RESTful API in line with many such APIs out there
