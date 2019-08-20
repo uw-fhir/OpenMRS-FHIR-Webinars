@@ -164,14 +164,14 @@ https://github.com/uw-fhir/fhir-api-tutorial/blob/master/fhir-calculator-noteboo
 
 ## Explore on your own!
 
-(modified version of https://uw-fhir.github.io/FHIRupUW/)
+https://uw-fhir.github.io/FHIRupUW/
+
 https://fire.ly/training/hl7-fhir-overview-course/?utm_source=fhir_training_mailing20190820&utm_medium=email
 
 ### Advanced FHIR Topics
-Get in touch with us!
-
 https://pasteapp.com/p/If8ttW55K0J/s/dcbcl3wi
 
+Get in touch with us!
 
 ## To-Do
 - [ ] Finish rough post outline w/ placeholders where necessary 
@@ -179,15 +179,13 @@ https://pasteapp.com/p/If8ttW55K0J/s/dcbcl3wi
 - [ ] Insert and check all out-links
 - [ ] Compile a new slide-deck and insert slides into placeholders
 - [ ] Do a quick run-through and fix issues (logical, spelling, links, tutorial, etc.)
-- [ ] Publish Talk post by 7am 8/20
+- [ ] Publish Talk post by 8/20
 - [ ] Post to Slack
 
 
 
-
+-----------------
 ## Notes and Edits
-
-
 
 - Quickly go over idea of resource, and of GET/PUT/POST/UPDATE
 
