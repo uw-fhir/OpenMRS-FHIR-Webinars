@@ -124,10 +124,15 @@ https://www.hl7.org/fhir/resourcelist.html
 
 <iframe src="https://pasteapp.com/p/OzVTNeWZln3/s/9mm9e825/embed" width="800" height="600" scrolling="no" frameborder="0" allowfullscreen></iframe>
 
-<iframe src="https://pasteapp.com/p/OzVTNeWZln3/s/EPMk15fruiV/embed" width="800" height="600" scrolling="no" frameborder="0" allowfullscreen></iframe>
- 
+*slide from https://pasteapp.com/p/OzVTNeWZln3/s/9mm9e825*
 
+<iframe src="https://pasteapp.com/p/OzVTNeWZln3/s/EPMk15fruiV/embed" width="800" height="600" scrolling="no" frameborder="0" allowfullscreen></iframe>
+
+*slide from https://pasteapp.com/p/OzVTNeWZln3/s/EPMk15fruiV*
+ 
 <iframe src="https://pasteapp.com/p/OzVTNeWZln3/s/8gw43cz9/embed" width="800" height="600" scrolling="no" frameborder="0" allowfullscreen></iframe>
+
+*slide from https://pasteapp.com/p/OzVTNeWZln3/s/8gw43cz9*
 
 --- 
 
@@ -144,7 +149,9 @@ FHIR aims to cover ~ 80% of Healthcare `situations`, and provides a [standard me
 
 ## FHIR and Related Projects
 
-<iframe src="https://pasteapp.com/p/OzVTNeWZln3/s/HQu2XIzmDF3/embed" width="1024" height="600" scrolling="no" frameborder="0" allowfullscreen></iframe>
+<iframe src="https://pasteapp.com/p/OzVTNeWZln3/s/HQu2XIzmDF3/embed" width="800" height="600" scrolling="no" frameborder="0" allowfullscreen></iframe>
+
+*slide from https://pasteapp.com/p/OzVTNeWZln3/s/HQu2XIzmDF3*
 
 **FHIR Tutorials**
 * https://psbrandt.io/fhir/
@@ -201,6 +208,8 @@ https://uw-fhir.github.io/FHIRupUW/
 
 ## Other Advanced FHIR Topics
 <iframe src="https://pasteapp.com/p/If8ttW55K0J/s/dcbcl3wi/embed" width="800" height="600" scrolling="no" frameborder="0" allowfullscreen></iframe>
+
+*slide from https://pasteapp.com/p/OzVTNeWZln3/s/dcbcl3wi*
 
 ## To-Do
 - [x] Finish rough post outline w/ placeholders where necessary 
