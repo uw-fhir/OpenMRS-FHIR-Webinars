@@ -9,14 +9,15 @@
   - [Outline](#outline)
   - [Learning Objectives](#learning-objectives)
   - [So, what is FHIR?](#so-what-is-fhir)
-  - [Provides a foundation for a couple of differnet technologies](#provides-a-foundation-for-a-couple-of-differnet-technologies)
+  - [Related Projects and Technologies](#related-projects-and-technologies)
   - [Spec vs. Implementation](#spec-vs-implementation)
-  - [A quick summary and critical look at FHIR in 2019](#a-quick-summary-and-critical-look-at-fhir-in-2019)
-  - [Tutorial Runthrough](#tutorial-runthrough)
+  - [FHIR API Tutorial](#fhir-api-tutorial)
   - [Explore on your own!](#explore-on-your-own)
     - [Advanced FHIR Topics](#advanced-fhir-topics)
   - [To-Do](#to-do)
   - [Notes and Edits](#notes-and-edits)
+
+---
 
 ## Learning Objectives
 
@@ -34,6 +35,7 @@
 
 6. Participate in an **ideation session** on opportunities for **FHIR** in the **OpenMRS** community
 
+---
 
 ## So, what is FHIR?
 
@@ -48,18 +50,20 @@ According to the [summary in the official documentation](http://hl7.org/fhir/sum
 
 The summary above does not paint a very comprehensive picture of the major health data standards maintained by the [HL7 Organization](http://www.hl7.org/about/index.cfm?ref=nav) before FHIR. 
 
-If you're interested in a more thorough history lesson about the **HL7 V2, V3, and CDA** standards, check out this slide deck and walk-throughs and send us any questions you might have!
+If you're interested in a more thorough history lesson about the **HL7 V2, V3, and CDA** standards, check out this slide deck and an associated [walk-through](https://github.com/bhi-spring-591-2019/instructors/blob/master/HL7%20and%20XDSToolkit%20walkthrough.mds) and send us any questions you might have!
 
-<iframe src="https://pasteapp.com/p/OzVTNeWZln3/s/4q19rk20" width="1200" height="800" scrolling="no" frameborder="0" allowfullscreen></iframe>
+<iframe src="https://pasteapp.com/p/OzVTNeWZln3/s/4q19rk20/embed" width="1200" height="800" scrolling="no" frameborder="0" allowfullscreen></iframe>
 
-Walk-through: https://github.com/bhi-spring-591-2019/instructors/blob/master/HL7%20and%20XDSToolkit%20walkthrough.mds
+Walk-through: 
 
-**Main Takeaway:** Previous HL7 standards are still in use today to varying degrees, but FHIR has recently experienced very fast growth and adoption.
+**Main Takeaway for Now:** Previous HL7 standards are still in use today to varying degrees, but FHIR is experienced very fast growth, maturation, and adoption.
 
-A slightly-outdated map:
+Here's a slightly-outdated map supporting that point - at least in the United States:
 ![FHIR-USA-Map](https://www.healthit.gov/buzz-blog/wp-content/uploads/2018/10/fhir-hospital-hrr-blog.png)
 
-Some reading material: https://www.healthit.gov/buzz-blog/interoperability/heat-wave-the-u-s-is-poised-to-catch-fhir-in-2019
+And here's some more on the topic: https://www.healthit.gov/buzz-blog/interoperability/heat-wave-the-u-s-is-poised-to-catch-fhir-in-2019
+
+---
 
 **What about the `web standards` part of the summary?**
 
@@ -69,27 +73,31 @@ The key point to remember is: FHIR is a [RESTful API](https://medium.com/extend/
 
 Some examples you might be familiar with: the [Twitter Search API](https://developer.twitter.com/en/docs/tweets/search/quick-start/premium-30-day), the [Github API](https://developer.github.com/v3/), [IBM's Watson Assistant](https://developer.ibm.com/patterns/watson-conversation-with-ibm-linuxone-systems/) and countless other services provide access to their data through a RESTful API.
 
-*(Slack also has a REST API that you can easily play with - I started doing an analysis of the OpenMRS #fhir channel here if you're interested: https://github.com/pmanko/slack_analysis/blob/master/fhir_channel.ipynb)*
+*Note: Slack also has a REST API that you can easily play with - I started doing an analysis of the OpenMRS #fhir channel here if you're interested: https://github.com/pmanko/slack_analysis/blob/master/fhir_channel.ipynb)*
+
+----
 
 **Ok, FHIR is a RESTful API...** But what exactly does that mean?
 
-We'll look into the **RESTful** part later, but lets first focus on **API**s (or **A**pplication **P**rogramming **I**nterfaces) in general.
+First, let's focus on what **API**s (or **A**pplication **P**rogramming **I**nterfaces) are in general.
 
 Here's a diagram from https://learn.g2.com/api that illustrates the concept "in simple terms":
 
 ![https://learn.g2.com/hs-fs/hubfs/what-is-an-API-waiter-example.png?width=1200&name=what-is-an-API-waiter-example.png](https://learn.g2.com/hs-fs/hubfs/what-is-an-API-waiter-example.png?width=1200&name=what-is-an-API-waiter-example.png)
 
-Say you have some app or service - in this case, a kitchen full of chefs that can create and output many exciting dishes. You also have a set of clients - in this case, the hungry customers - who  want to get at the provided services. 
+Say you have some app or `service` - in this case, a kitchen full of chefs that can create and output many exciting dishes. You also have a set of `clients` - very hungry restaurant patrons - who  want to get at the provided services.
 
-However, these clients might be completely ignorant of how the "kitchen" works, what food it provides, and all the other intricacies of running a restaurant. 
+However, these `clients` might be completely ignorant of how this specific kitchen (`service`) operates, what food is provided, how this food is made and dispensed, and all the other intricacies of running a restaurant. Yet these `clients` still want access to this and other such restaurant `services` with minimal hassle.
 
-That's where the API/waiter comes in. The waiter acts as an interface for the customers to interact with the kitchen, by translating the needs of the clients into a language the kitchen can understand, and delivering the required services back to the hungry clients. 
+That's where the waiter (`API`) comes in. The waiter acts as an interface that the customers to interact with, and translates their needs to the kitchen in a way the kitchen can understand. Finally, the waiter/`API` devlivers the services to the `clients`, isolating the kitchen from individual interactions. 
 
-Ideally, this API/Waiter provides the customers with an experiance they've come to expect from other such fine establishments, so even though the kitchen might work completely differently, the experience is not unfamiliar. 
+Ideally, the waiter/`API` provides the customers with an experiance they've come to expect from other such fine establishments. Even if this kitchen/`service` operates completely differently and - maybe a different cuisine, done on a different scale, at a different pricepoint - the experience as viewed by the `clients` using the waiter/`API` is not unfamiliar.
 
-So, in summary, an API provides a standardized, (ideally) well-documented, and convenient endpoint for clients to interface with some service. 
+**In summary,** an ideal `API` provides a standardized, well-documented, and convenient endpoint for `clients` to interface with a given `app` or `service`. 
 
 If you want to learn a bit more about APIs and how they relate to FHIR, check out [Pascal Brandt's](https://talk.openmrs.org/u/pascal/summary) quick API & FHIR tutorial: https://psbrandt.io/fhir/
+
+---
 
 **Ok, now what about the RESTful Part?**
 
@@ -116,57 +124,67 @@ https://www.hl7.org/fhir/resourcelist.html
 >
 > *source: http://hl7.org/fhir/operationslist.html*
 
+---
 
-TODO: Incorporate better into flow
-**In summary,**
-Here are a few slides that outline what FHIR is:
+**Let's step back a bit** and talk about what exactly is part of the FHIR standard, and what falls out of scope - or is addressed by a related project or technology.
+
 - https://pasteapp.com/p/If8ttW55K0J/s/9mm9e825
 - https://pasteapp.com/p/If8ttW55K0J/s/EPMk15fruiV
 
 And what FHIR is NOT:
 - https://pasteapp.com/p/If8ttW55K0J/s/8gw43cz9
 
-**Main Gist: FHIR can serve as the electronic language of for healthcare data**
+**FHIR provides a framework for the representation of healthcare data and methods for sending and retrieving this data**
 
+It has the potential to be the language that all kinds of different healthcare apps and services - 
+EHRs, personal health apps, fitness trackers, Apple Health, patient portals, clinical labs, and so on - communicate with.
 
---> Provides a General Framework for Healthcare Data and Standardized Methods to manipulate this data
---> Aims to cover ~80% of Healthcare situations (maybe comment on which "situations" apply
---> Provides a standard method for extension to cover the otehr 20%
+FHIR also aims to cover ~80% of Healthcare `situations`, and provides a [standard method for extension](https://www.hl7.org/fhir/extensibility.html) to cover the other 20%.
   
------
+----
 
-Some Illustrations of This Concept
-(Basically, show what fhir can do w/ different examples)
+## Related Projects and Technologies
+<iframe src="https://pasteapp.com/p/OzVTNeWZln3/s/HQu2XIzmDF3/embed" width="1200" height="800" scrolling="no" frameborder="0" allowfullscreen></iframe>
 
-## Provides a foundation for a couple of differnet technologies
-(Quuick run through, w/ a single phrase summary of what each tech is and how each tech uses FHIR)
+**FHIR Tutorials**
+* https://psbrandt.io/fhir/
+* https://github.com/uw-fhir/fhir-api-tutorial
 
-**
-(eg. HL7, SMART on FHIR, CDS Hooks, FHIR Bulk Data API, Argonaut,  etc. etc.)**
+**SMART on FHIR**
+* https://docs.smarthealthit.org/
+* https://gallery.smarthealthit.org/ 
 
+tutorial: https://github.com/uw-fhir/smart-on-fhir-tutorial
+
+**CDS Hooks**
+* https://cds-hooks.org/
+* https://sandbox.cds-hooks.org/
+
+UW FHIR tutorial: https://github.com/uw-fhir/CDS-Hooks-Tutorial
+Cerner tutorial: https://github.com/cerner/cds-services-tutorial
+
+**Apple Health Records**
+* https://www.apple.com/healthcare/health-records/
+
+**Google Cloud Healthcare API and FHIR**
+* https://cloud.google.com/healthcare/docs/concepts/fhir
 SoF + App Galleries
 
+**AWS and FHIR**
+* https://aws.amazon.com/blogs/publicsector/achieving-healthcare-interoperability/
 CDS Hooks
-
-Apple Health Kit
-
-Illustrate with these examples
 
 ## Spec vs. Implementation
 
-A standard is only useful if it is adopted
-
-There's a large difference between the FHIR specifications and the actual implementation
-
-1. Quick primer on the history of FHIR, including versions: https://www.hl7.org/fhir/history.html
-2. Overview of adopted versions across some platforms: Apple Health, Azure, Epic, Cerner, a sandbox or two
-3. Quick dive into other gaps between spec and implementation: page outlining get/post support
-
-## A quick summary and critical look at FHIR in 2019
+There's a large difference between the FHIR specifications and the actual implementation of a standard.
 
 
+FHIR is relatively mature as an API, and the documented features are relatively comprehensive
 
-## Tutorial Runthrough
+The HAPI
+
+
+## FHIR API Tutorial
 https://github.com/uw-fhir/fhir-api-tutorial/blob/master/fhir-calculator-notebook.ipynb
 
 ## Explore on your own!
