@@ -1,3 +1,7 @@
+
+*Check out the [Webinars Github Page](https://github.com/uw-fhir/OpenMRS-FHIR-Webinars/tree/master/Webinar-1-Intro-to-FHIR) for another view of this tutorial*\
+*Check out https://pasteapp.com/p/OzVTNeWZln3/s/hljtep4x for the companion slide deck*
+
 # An Introduction to the FHIR API
 
 ## Outline
@@ -44,15 +48,18 @@ According to the [summary in the official documentation](http://hl7.org/fhir/sum
 
 The summary above does not paint a very comprehensive picture of the major health data standards maintained by the [HL7 Organization](http://www.hl7.org/about/index.cfm?ref=nav) before FHIR. 
 
-If you're interested in a more thorough history lesson about the **HL7 V2, V3, and CDA** standards, check out these two slide decks and walk-throughs and send us any questions you might have!
+If you're interested in a more thorough history lesson about the **HL7 V2, V3, and CDA** standards, check out this slide deck and walk-throughs and send us any questions you might have!
 
-https://pasteapp.com/p/Ggufyqh11of/s/5m7aiy75
-https://pasteapp.com/p/If8ttW55K0J/s/4q19rk20
-https://github.com/bhi-spring-591-2019/instructors/blob/master/HL7%20and%20XDSToolkit%20walkthrough.md
+<iframe src="https://pasteapp.com/p/OzVTNeWZln3/s/4q19rk20" width="1200" height="800" scrolling="no" frameborder="0" allowfullscreen></iframe>
+
+Walk-through: https://github.com/bhi-spring-591-2019/instructors/blob/master/HL7%20and%20XDSToolkit%20walkthrough.mds
 
 **Main Takeaway:** Previous HL7 standards are still in use today to varying degrees, but FHIR has recently experienced very fast growth and adoption.
 
-https://www.healthit.gov/buzz-blog/interoperability/heat-wave-the-u-s-is-poised-to-catch-fhir-in-2019
+A slightly-outdated map:
+![FHIR-USA-Map](https://www.healthit.gov/buzz-blog/wp-content/uploads/2018/10/fhir-hospital-hrr-blog.png)
+
+Some reading material: https://www.healthit.gov/buzz-blog/interoperability/heat-wave-the-u-s-is-poised-to-catch-fhir-in-2019
 
 **What about the `web standards` part of the summary?**
 
@@ -210,3 +217,18 @@ overview of APIs again, and a quick look at OpenMRS API
 --> Go back to focus on FHIR:
 scope is more general (Healthcare),
 but:
+
+
+        Ideation:
+
+        What FHIR might enable in each participant’s work on OpenMRS
+
+
+        What barriers / issues / gaps might pop up
+ 
+ 
+        Open Floor : other questions / ideas / comments
+
+Thoughts, comments:
+
+use talk for continued discussion
