@@ -13,7 +13,7 @@
   - [Spec vs. Implementation](#spec-vs-implementation)
   - [FHIR API Tutorial](#fhir-api-tutorial)
   - [Explore on your own!](#explore-on-your-own)
-    - [Some Other Advanced FHIR Topics](#some-other-advanced-fhir-topics)
+  - [Other Advanced FHIR Topics](#other-advanced-fhir-topics)
   - [To-Do](#to-do)
   - [Notes and Edits](#notes-and-edits)
 
@@ -23,23 +23,13 @@
 
 1. Recognize the basic features and uses of modern **web APIs** & how **FHIR fits** in as a RESTful API.
 
-* I generally like action statments, they sound simpler..."Understand the FHIR standard...." 
+2. **Understand** the general concepts behind FHIR standard for health care data exchange, including the **history**, **purpose**, **scope**, the **adoption** and **implementation** situation.
+    
+3. Be **aware** of major **projects**, **collaborations**, **implementations**, and **technologies** that use or focus on FHIR, and recognize the gaps between a Standard and its implementations.
 
-2. Have a general **understanding** of the FHIR standard for health care data exchange, including an overview of the **history**, **purpose**, **scope**, the **adoption** and **implementation** situation.
-    * Identify gaps between the spec and its implementations
-    * Understand what functionality & features are **NOT** part of FHIR
+4. Complete a FHIR tutorial that **queries** data from a **FHIR endpoint** to implement a simple cardiovascular risk calculator.
 
-*"Be aware of ..." 
-
-3. Have a general **awareness** of major **projects**, **collaborations**, **implementations**, and **technologies** that use or focus on FHIR.
-
-*"Complete a FHIR tutorial..." 
-
-4. Work through a FHIR tutorial that **queries** data from a **FHIR endpoint** to implement a simple cardiovascular risk calculator.
-
-*"Explore FHIR..."
-
-5. Be able to explore FHIR independently through provided access to **projects**, **readings**, **tutorials**, and other useful resources
+5. Explore FHIR independently through provided access to **projects**, **readings**, **tutorials**, and other useful resources
 
 6. Participate in an **ideation session** on opportunities for **FHIR** in the **OpenMRS** community
 
@@ -49,10 +39,7 @@
 
 **FHIR** stands for **Fast** **Healthcare** **Interoperability** **Resources**.
 
-*"According to the official documentation..." 
-*I also don't really understand what FHIR is. Am I supposed to? Is there a way to explain it in layman's terms? Is it a framework for developing health care applications in line with national health care standards? 
-
-According to the [summary in the official documentation](http://hl7.org/fhir/summary.html#2.17), FHIR is a
+According to the [the official documentation](http://hl7.org/fhir/summary.html#2.17), FHIR is a
 > "...next generation standards framework created by HL7. FHIR combines the best features of HL7's v2 , HL7 v3  and CDA  product lines while leveraging the **latest web standards** and applying a tight focus on **implementability**."
 > 
 >*source: http://hl7.org/fhir/summary.html#2.17*
@@ -72,9 +59,7 @@ And here's some more on the topic: https://www.healthit.gov/buzz-blog/interopera
 
 ---
 
-**What about the `web standards` part of the summary?**
-
---This question doesn't make much sense. Maybe "How can I quickly understand FHIR's web standards?" 
+**What are the `web standards` that FHIR leverages?**
 
 To understand FHIR better, we'll dive into what the `latest web standards` are, how they facilitate `implementability`, and what this `implementability` could mean.
 
@@ -214,7 +199,7 @@ https://github.com/uw-fhir/fhir-api-tutorial/blob/master/fhir-calculator-noteboo
 https://uw-fhir.github.io/FHIRupUW/
 
 
-### Some Other Advanced FHIR Topics
+## Other Advanced FHIR Topics
 <iframe src="https://pasteapp.com/p/If8ttW55K0J/s/dcbcl3wi/embed" width="800" height="600" scrolling="no" frameborder="0" allowfullscreen></iframe>
 
 ## To-Do
