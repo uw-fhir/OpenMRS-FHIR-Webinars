@@ -71,7 +71,7 @@ Some examples you might be familiar with: the [Twitter Search API](https://devel
 
 ----
 
-**FHIR is a RESTful API...**which means what exactly?
+**FHIR is a RESTful API...** which means what exactly?
 
 Let's first focus on **API**s - or **A**pplication **P**rogramming **I**nterfaces - in general.
 
@@ -208,7 +208,7 @@ https://uw-fhir.github.io/FHIRupUW/
 - [x] Insert and check all out-links
 - [x] Compile a new slide-deck and insert slides into placeholders
 - [x] Do a quick run-through and fix issues (logical, spelling, links, tutorial, etc.)
-- [ ] Publish Talk post by 8/20
+- [x] Publish Talk post by 8/20
 - [ ] Post to Slack
 
 -----------------

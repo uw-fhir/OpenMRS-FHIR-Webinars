@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+        <title>An Introduction to the FHIR API</title>
+        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+        
+        <style>
+.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
+</style>
+        <style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        
+        
+    </head>
+    <body>
+        <p><em>Check out the <a href="https://github.com/uw-fhir/OpenMRS-FHIR-Webinars/tree/master/Webinar-1-Intro-to-FHIR">Webinars Github Page</a> for another view of this tutorial</em><br>
+<em>Check out <a href="https://pasteapp.com/p/OzVTNeWZln3/s/hljtep4x">https://pasteapp.com/p/OzVTNeWZln3/s/hljtep4x</a> for the companion slide deck</em></p>
+<h1 id="an-introduction-to-the-fhir-api">An Introduction to the FHIR API</h1>
+<h2 id="outline">Outline</h2>
+<ul>
+<li><a href="#an-introduction-to-the-fhir-api">An Introduction to the FHIR API</a>
+<ul>
+<li><a href="#outline">Outline</a></li>
+<li><a href="#learning-objectives">Learning Objectives</a></li>
+<li><a href="#so-what-is-fhir">So, what is FHIR?</a></li>
+<li><a href="#fhir-and-related-projects">FHIR and Related Projects</a></li>
+<li><a href="#spec-vs-implementation">Spec vs. Implementation</a></li>
+<li><a href="#fhir-api-tutorial">FHIR API Tutorial</a></li>
+<li><a href="#explore-on-your-own">Explore on your own!</a></li>
+<li><a href="#other-advanced-fhir-topics">Other Advanced FHIR Topics</a></li>
+<li><a href="#to-do">To-Do</a></li>
+<li><a href="#notes-and-edits">Notes and Edits</a></li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="learning-objectives">Learning Objectives</h2>
+<ol>
+<li>
+<p>Recognize the basic features and uses of modern <strong>web APIs</strong> &amp; how <strong>FHIR fits</strong> in as a RESTful API.</p>
+</li>
+<li>
+<p><strong>Understand</strong> the general concepts behind FHIR standard for health care data exchange, including the <strong>history</strong>, <strong>purpose</strong>, <strong>scope</strong>, the <strong>adoption</strong> and <strong>implementation</strong> situation.</p>
+</li>
+<li>
+<p>Be <strong>aware</strong> of major <strong>projects</strong>, <strong>collaborations</strong>, <strong>implementations</strong>, and <strong>technologies</strong> that use or focus on FHIR, and recognize the gaps between a Standard and its implementations.</p>
+</li>
+<li>
+<p>Complete a FHIR tutorial that <strong>queries</strong> data from a <strong>FHIR endpoint</strong> to implement a simple cardiovascular risk calculator.</p>
+</li>
+<li>
+<p>Explore FHIR independently through provided access to <strong>projects</strong>, <strong>readings</strong>, <strong>tutorials</strong>, and other useful resources</p>
+</li>
+<li>
+<p>Participate in an <strong>ideation session</strong> on opportunities for <strong>FHIR</strong> in the <strong>OpenMRS</strong> community</p>
+</li>
+</ol>
+<hr>
+<h2 id="so-what-is-fhir">So, what is FHIR?</h2>
+<p><strong>FHIR</strong> stands for <strong>Fast</strong> <strong>Healthcare</strong> <strong>Interoperability</strong> <strong>Resources</strong>.</p>
+<p>According to the <a href="http://hl7.org/fhir/summary.html#2.17">the official documentation</a>, FHIR is a</p>
+<blockquote>
+<p>&quot;...next generation standards framework created by HL7. FHIR combines the best features of HL7's v2 , HL7 v3  and CDA  product lines while leveraging the <strong>latest web standards</strong> and applying a tight focus on <strong>implementability</strong>.&quot;</p>
+<p><em>source: <a href="http://hl7.org/fhir/summary.html#2.17">http://hl7.org/fhir/summary.html#2.17</a></em></p>
+</blockquote>
+<p><strong>If FHIR is &quot;next generation&quot;, what came before?</strong></p>
+<p>The summary above does not paint a very comprehensive picture of the major health data standards maintained by the <a href="http://www.hl7.org/about/index.cfm?ref=nav">HL7 Organization</a> before FHIR.</p>
+<p>If you're interested in a more thorough history lesson about the <strong>HL7 V2, V3, and CDA</strong> standards, check out <a href="https://pasteapp.com/p/OzVTNeWZln3/s/4q19rk20/">this slide deck</a> and an associated <a href="https://github.com/bhi-spring-591-2019/instructors/blob/master/HL7%20and%20XDSToolkit%20walkthrough.mds">walk-through</a> and send us any questions you might have!</p>
+<p><strong>Main Takeaway for Now:</strong> Previous HL7 standards are still in use today to varying degrees, but FHIR is experiencing very fast growth, maturation, and adoption.</p>
+<p>Here's a slightly-outdated map showing the growth of FHIR- at least in the United States:
+<img src="https://www.healthit.gov/buzz-blog/wp-content/uploads/2018/10/fhir-hospital-hrr-blog.png" alt="FHIR-USA-Map"></p>
+<p>And here's some more on the topic: <a href="https://www.healthit.gov/buzz-blog/interoperability/heat-wave-the-u-s-is-poised-to-catch-fhir-in-2019">https://www.healthit.gov/buzz-blog/interoperability/heat-wave-the-u-s-is-poised-to-catch-fhir-in-2019</a></p>
+<hr>
+<p><strong>What are the <code>web standards</code> that FHIR leverages?</strong></p>
+<p>To understand FHIR better, we'll dive into what the <code>latest web standards</code> are, how they facilitate <code>implementability</code>, and what this <code>implementability</code> could mean.</p>
+<p>The key point to remember is: FHIR is a <a href="https://medium.com/extend/what-is-rest-a-simple-explanation-for-beginners-part-1-introduction-b4a072f8740f">RESTful API</a>, which puts it in a class of web standards that is very widely used in the tech field to transfer all kinds of data between different applications and systems.</p>
+<p>Some examples you might be familiar with: the <a href="https://developer.twitter.com/en/docs/tweets/search/quick-start/premium-30-day">Twitter Search API</a>, the <a href="https://developer.github.com/v3/">Github API</a>, <a href="https://developer.ibm.com/patterns/watson-conversation-with-ibm-linuxone-systems/">IBM's Watson Assistant</a> and countless other services provide access to their data through a RESTful API.</p>
+<p><em>Note: Slack also has a REST API that you can easily play with - I started doing an analysis of the OpenMRS #fhir channel here if you're interested: <a href="https://github.com/pmanko/slack_analysis/blob/master/fhir_channel.ipynb">https://github.com/pmanko/slack_analysis/blob/master/fhir_channel.ipynb</a>)</em></p>
+<hr>
+<p><strong>FHIR is a RESTful API...</strong> which means what exactly?</p>
+<p>Let's first focus on <strong>API</strong>s - or <strong>A</strong>pplication <strong>P</strong>rogramming <strong>I</strong>nterfaces - in general.</p>
+<p>Here's a diagram from <a href="https://learn.g2.com/api">https://learn.g2.com/api</a> that illustrates the concept behind APIs &quot;in simple terms&quot;:</p>
+<p><img src="https://learn.g2.com/hs-fs/hubfs/what-is-an-API-waiter-example.png?width=1200&amp;name=what-is-an-API-waiter-example.png" alt="https://learn.g2.com/hs-fs/hubfs/what-is-an-API-waiter-example.png?width=1200&amp;name=what-is-an-API-waiter-example.png"></p>
+<p>Say you have some app or <code>service</code> - in this case, a kitchen full of chefs that can create and output many exciting dishes. You also have a set of <code>clients</code> - very hungry restaurant patrons - who  want to get at the provided services.</p>
+<p>However, these <code>clients</code> might be completely ignorant of how this specific kitchen (<code>service</code>) operates, what food is provided, how this food is made and dispensed, and all the other intricacies of running a restaurant. Yet these <code>clients</code> still want access to this and other such restaurant <code>services</code> with minimal hassle.</p>
+<p>That's where the waiter (<code>API</code>) comes in. The waiter acts as an interface that the customers to interact with, and translates their needs to the kitchen in a way the kitchen can understand. Finally, the waiter/<code>API</code> devlivers the services to the <code>clients</code>, isolating the kitchen from individual interactions.</p>
+<p>Ideally, the waiter/<code>API</code> provides the customers with an experiance they've come to expect from other such fine establishments. Even if this kitchen/<code>service</code> operates completely differently and - maybe a different cuisine, done on a different scale, at a different pricepoint - the experience as viewed by the <code>clients</code> using the waiter/<code>API</code> is not unfamiliar.</p>
+<p><strong>In summary,</strong> an ideal <code>API</code> provides a standardized, well-documented, and convenient endpoint for <code>clients</code> to interface with a given <code>app</code> or <code>service</code>.</p>
+<p>If you want to learn a bit more about APIs and how they relate to FHIR, check out <a href="https://talk.openmrs.org/u/pascal/summary">Pascal Brandt's</a> quick API &amp; FHIR tutorial: <a href="https://psbrandt.io/fhir/">https://psbrandt.io/fhir/</a></p>
+<hr>
+<p><strong>Ok, now what about the RESTful part?</strong></p>
+<p>RESTful APIs are a subclass of Web APIs that define a set of standard <strong><a href="https://restful-api-design.readthedocs.io/en/latest/methods.html">Operations</a></strong> on digital representations of objects called <strong><a href="https://restful-api-design.readthedocs.io/en/latest/resources.html">Resources</a></strong>.</p>
+<p>The <a href="http://hl7.org/fhir/summary.html#2.17">official FHIR page</a> iillustrates how foundational these two concepts are for the FHIR standard.</p>
+<p><strong>Resources</strong> are mentioned in the second paragraph of the summary:</p>
+<blockquote>
+<p>FHIR solutions are built from a set of modular components called <strong>Resources</strong>...[that can] easily be assembled into working systems that solve real world clinical and administrative problems...</p>
+<p><em>source: <a href="http://hl7.org/fhir/summary.html#2.17">http://hl7.org/fhir/summary.html#2.17</a></em></p>
+</blockquote>
+<p>These resources are defined to represent the various different concepts important in healtcare scenarios, including patients, clinical encounters, medications, and so on.</p>
+<p>You can browse them all on the following page:<br>
+<a href="https://www.hl7.org/fhir/resourcelist.html">https://www.hl7.org/fhir/resourcelist.html</a></p>
+<p><strong>Operations</strong> are highlighted <a href="http://hl7.org/fhir/operationslist.html">here</a>, and introduced as follows:</p>
+<blockquote>
+<p>The RESTful API defines a set of common interactions (read, update, search, etc.) performed on a repository of typed resources. For further information concerning how operations are defined and invoked, see Extended Operations on the RESTful API.</p>
+<p>This is a full list of the operations defined by this specification:</p>
+<p><em>source: <a href="http://hl7.org/fhir/operationslist.html">http://hl7.org/fhir/operationslist.html</a></em></p>
+</blockquote>
+<hr>
+<p><strong>Let's step back a bit</strong> and talk about what exactly is part of the FHIR standard, and what falls out of scope - or is addressed by a related project or technology.</p>
+<iframe src="https://pasteapp.com/p/OzVTNeWZln3/s/9mm9e825/embed" width="800" height="600" scrolling="no" frameborder="0" allowfullscreen></iframe>
+<iframe src="https://pasteapp.com/p/OzVTNeWZln3/s/EPMk15fruiV/embed" width="800" height="600" scrolling="no" frameborder="0" allowfullscreen></iframe>
+<iframe src="https://pasteapp.com/p/OzVTNeWZln3/s/8gw43cz9/embed" width="800" height="600" scrolling="no" frameborder="0" allowfullscreen></iframe>
+<hr>
+<p><strong>In Summary</strong></p>
+<p>FHIR provides a framework for the representation of healthcare data and methods for sending and retrieving this data.</p>
+<p>The standard has the potential to be the language that all kinds of different healthcare apps and services <br>
+- EHRs, personal health apps, fitness trackers, patient portals, clinical labs, and so on - all communicate with.</p>
+<p>FHIR aims to cover ~ 80% of Healthcare <code>situations</code>, and provides a <a href="https://www.hl7.org/fhir/extensibility.html">standard method for extension</a> to cover the other ~ 20%.</p>
+<hr>
+<h2 id="fhir-and-related-projects">FHIR and Related Projects</h2>
+<iframe src="https://pasteapp.com/p/OzVTNeWZln3/s/HQu2XIzmDF3/embed" width="1024" height="600" scrolling="no" frameborder="0" allowfullscreen></iframe>
+<p><strong>FHIR Tutorials</strong></p>
+<ul>
+<li><a href="https://psbrandt.io/fhir/">https://psbrandt.io/fhir/</a></li>
+<li><a href="https://github.com/uw-fhir/fhir-api-tutorial">https://github.com/uw-fhir/fhir-api-tutorial</a></li>
+</ul>
+<p><strong>SMART on FHIR</strong></p>
+<ul>
+<li><a href="https://docs.smarthealthit.org/">https://docs.smarthealthit.org/</a></li>
+<li><a href="https://gallery.smarthealthit.org/">https://gallery.smarthealthit.org/</a></li>
+</ul>
+<p>tutorial: <a href="https://github.com/uw-fhir/smart-on-fhir-tutorial">https://github.com/uw-fhir/smart-on-fhir-tutorial</a></p>
+<p><strong>CDS Hooks</strong></p>
+<ul>
+<li><a href="https://cds-hooks.org/">https://cds-hooks.org/</a></li>
+<li><a href="https://sandbox.cds-hooks.org/">https://sandbox.cds-hooks.org/</a></li>
+</ul>
+<p>UW FHIR tutorial: <a href="https://github.com/uw-fhir/CDS-Hooks-Tutorial">https://github.com/uw-fhir/CDS-Hooks-Tutorial</a>
+Cerner tutorial: <a href="https://github.com/cerner/cds-services-tutorial">https://github.com/cerner/cds-services-tutorial</a></p>
+<p><strong>Apple Health Records</strong></p>
+<ul>
+<li><a href="https://www.apple.com/healthcare/health-records/">https://www.apple.com/healthcare/health-records/</a></li>
+</ul>
+<p><strong>Google Cloud Healthcare API and FHIR</strong></p>
+<ul>
+<li><a href="https://cloud.google.com/healthcare/docs/concepts/fhir">https://cloud.google.com/healthcare/docs/concepts/fhir</a>
+SoF + App Galleries</li>
+</ul>
+<p><strong>AWS and FHIR</strong></p>
+<ul>
+<li><a href="https://aws.amazon.com/blogs/publicsector/achieving-healthcare-interoperability/">https://aws.amazon.com/blogs/publicsector/achieving-healthcare-interoperability/</a>
+CDS Hooks</li>
+</ul>
+<h2 id="spec-vs-implementation">Spec vs. Implementation</h2>
+<p>There's a large difference between the FHIR specifications and the actual implementation of a standard.</p>
+<p>FHIR is relatively mature as an API, and the documented features are relatively comprehensive.</p>
+<p>However, the FHIR endpoints that have been implemented so far differ widely in the extent their implementation matches the spec.</p>
+<p>This distinction between the (1) state of the FHIR standard itself and the (2) the adherance of different implementations to the standard is crucial for any organization exploring the use of this technology.</p>
+<h2 id="fhir-api-tutorial">FHIR API Tutorial</h2>
+<p>Now, we'll put all of this learning in action and build our own <strong>Cardiovascular Risk Calculator</strong> using FHIR resources!</p>
+<p><a href="https://github.com/uw-fhir/fhir-api-tutorial/blob/master/fhir-calculator-notebook.ipynb">https://github.com/uw-fhir/fhir-api-tutorial/blob/master/fhir-calculator-notebook.ipynb</a></p>
+<h2 id="explore-on-your-own">Explore on your own!</h2>
+<ol>
+<li>
+<p>Work through this tutorial on your own, and post comments with any thoughts or questions.</p>
+</li>
+<li>
+<p>Check out the links in the <a href="#fhir-and-related-projects">FHIR and Related Projects</a> section.</p>
+</li>
+<li>
+<p>Look through some more resources we've complied over the last couple years:
+<a href="https://uw-fhir.github.io/FHIRupUW/">https://uw-fhir.github.io/FHIRupUW/</a></p>
+</li>
+</ol>
+<h2 id="other-advanced-fhir-topics">Other Advanced FHIR Topics</h2>
+<iframe src="https://pasteapp.com/p/If8ttW55K0J/s/dcbcl3wi/embed" width="800" height="600" scrolling="no" frameborder="0" allowfullscreen></iframe>
+<h2 id="to-do">To-Do</h2>
+<ul class="contains-task-list">
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox"> Finish rough post outline w/ placeholders where necessary</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox"> Compare w/ ITECH presentation to identify any gaps</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox"> Insert and check all out-links</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox"> Compile a new slide-deck and insert slides into placeholders</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox"> Do a quick run-through and fix issues (logical, spelling, links, tutorial, etc.)</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox"> Publish Talk post by 8/20</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox"> Post to Slack</li>
+</ul>
+<hr>
+<h2 id="notes-and-edits">Notes and Edits</h2>
+<ul>
+<li>Quickly go over idea of resource, and of GET/PUT/POST/UPDATE</li>
+</ul>
+<p>By modeling healthcare concepts as resources and providing? some standard functionality for using these resources, FHIR is essenitally a RESTful API in line with many such APIs out there</p>
+<pre><code><div>overview of APIs again, and a quick look at OpenMRS API
+--&gt; OpenMRS actually has an API (Is it restful?) --&gt; quick overview of Restful Web Services
+</div></code></pre>
+<p>(Not sure where / how to discuss this: perhaps out of scope?) maybe only respond to possible questions about why we need FHIR.</p>
+<p>(Perhaps tie in how being an API is not very useful; being an API with a specific focus/scope, large community, and good documentation is great)
+--&gt; quickly highlight what the API might be lacking:</p>
+<ul>
+<li>Not universal</li>
+<li>Lacking some documentation</li>
+<li>Lacking wider community use?</li>
+</ul>
+<p>--&gt; Go back to focus on FHIR:
+scope is more general (Healthcare),
+but:</p>
+<pre><code>    Ideation:
+
+    What FHIR might enable in each participant’s work on OpenMRS
+
+
+    What barriers / issues / gaps might pop up
+
+
+    Open Floor : other questions / ideas / comments
+</code></pre>
+<p>Thoughts, comments:</p>
+<p>use talk for continued discussion</p>
+
+    </body>
+    </html>
