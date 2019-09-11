@@ -112,7 +112,7 @@ https://openmrs.slack.com/archives/CKLPH66BB/p1561654221061100
 ## Case Study: HAPI FHIR
 A Java-based implementation of the FHIR standard whose development tracks very closely with the official releases. 
 
-![hapi-fhir-uses](https://github.com/uw-fhir/OpenMRS-FHIR-Webinars/raw/Webinar-2-OpenMRS-and-FHIR/hapiusage.png)
+![hapi-fhir-uses](https://github.com/uw-fhir/OpenMRS-FHIR-Webinars/raw/master/Webinar-2-OpenMRS-and-FHIR/hapiusage.png)
 
 https://openmrs.slack.com/archives/CKLPH66BB/p1563548356111600
 
