@@ -9,7 +9,6 @@
   - [Learning Objectives](#learning-objectives)
 - [Introduction](#introduction)
   - [Review of Webinar 1](#review-of-webinar-1)
-  - [Discussion: approaches to tutorials and community education.](#discussion-approaches-to-tutorials-and-community-education)
 - [OpenMRS and FHIR today](#openmrs-and-fhir-today)
   - [OpenMRS REST Web Services](#openmrs-rest-web-services)
   - [OpenMRS FHIR Module](#openmrs-fhir-module)
@@ -51,7 +50,7 @@ Also, if you'd like to get some other perspectives on FHIR, check out these two 
 1. [Intro to FHIR](https://vimeo.com/296068669)
 2. [ClinFHIR Tutorial](https://vimeo.com/296069454)
 
-## Discussion: approaches to tutorials and community education.
+*Quick Discussion:* best approaches to tutorials and community education?
 
 # OpenMRS and FHIR today
 
