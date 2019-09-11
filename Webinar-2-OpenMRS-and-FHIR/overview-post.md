@@ -103,7 +103,8 @@ https://wiki.openmrs.org/display/docs/Data+Model
 
 *How is it used today?*
 
-!(https://wiki.openmrs.org/display/docs/Data+Model?preview=/589829/34374263/openmrs_data_model_1.9.0.png)
+![openmrs data model](https://wiki.openmrs.org/display/docs/Data+Model?preview=/589829/34374263/openmrs_data_model_1.9.0.png)
+
 https://wiki.openmrs.org/display/docs/Data+Model?preview=/589829/34374263/openmrs_data_model_1.9.0.png
 
 # Possible Paths Forward 
