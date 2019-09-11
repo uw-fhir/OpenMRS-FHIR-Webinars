@@ -12,6 +12,7 @@
 - [OpenMRS and FHIR today](#openmrs-and-fhir-today)
   - [OpenMRS REST Web Services](#openmrs-rest-web-services)
   - [OpenMRS FHIR Module](#openmrs-fhir-module)
+  - [The OpenMRS Data Model](#the-openmrs-data-model)
 - [Possible Paths Forward](#possible-paths-forward)
   - [Case Study: HAPI FHIR](#case-study-hapi-fhir)
 - [Collaborative Lists](#collaborative-lists)
@@ -45,7 +46,7 @@ We had a few issues with recording the video, and unfortunately have no video of
 
 https://www.youtube.com/watch?v=Pd6ifRm2bmA
 
-Also, if you'd like to get some other perspectives on FHIR, check out these two videos from a tutorial #[Viet Nguyen](https://www.linkedin.com/in/vietnguyenmd/) gave at last year's [UW FHIR Workshop](https://uwfhir.org/tutorials/):
+Also, if you'd like to get some other perspectives on FHIR, check out these two videos from a tutorial [Viet Nguyen](https://www.linkedin.com/in/vietnguyenmd/) gave at last year's [UW FHIR Workshop](https://uwfhir.org/tutorials/):
 
 1. [Intro to FHIR](https://vimeo.com/296068669)
 2. [ClinFHIR Tutorial](https://vimeo.com/296069454)
@@ -72,6 +73,7 @@ https://wiki.openmrs.org/display/docs/REST+Module
 
 https://github.com/openmrs/openmrs-module-webservices.rest
 
+
 ## OpenMRS FHIR Module
 
 *Why was it implemented?*
@@ -94,6 +96,15 @@ https://github.com/openmrs/openmrs-module-webservices.rest
 
 -  https://www.youtube.com/results?search_query=openmrs+fhir
 
+## The OpenMRS Data Model
+https://wiki.openmrs.org/display/docs/Data+Model
+
+*Why was it implemented?*
+
+*How is it used today?*
+
+!(https://wiki.openmrs.org/display/docs/Data+Model?preview=/589829/34374263/openmrs_data_model_1.9.0.png)
+https://wiki.openmrs.org/display/docs/Data+Model?preview=/589829/34374263/openmrs_data_model_1.9.0.png
 
 # Possible Paths Forward 
 https://openmrs.slack.com/archives/CKLPH66BB/p1561654221061100
