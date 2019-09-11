@@ -109,8 +109,7 @@ https://openmrs.slack.com/archives/CKLPH66BB/p1563548356111600
 - https://hapifhir.io/
 - https://hapifhir.io/docindex.html
 - https://smilecdr.com/smilecdr.html
-- 
-
+  
 # Collaborative Lists 
 
 ## FHIR efforts in the OpenMRS community
