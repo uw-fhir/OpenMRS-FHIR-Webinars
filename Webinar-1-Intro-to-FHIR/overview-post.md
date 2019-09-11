@@ -1,8 +1,11 @@
 
+
 *Check out the [Webinars Github Page](https://github.com/uw-fhir/OpenMRS-FHIR-Webinars/tree/master/Webinar-1-Intro-to-FHIR) for another view of this tutorial*\
 *Check out https://pasteapp.com/p/OzVTNeWZln3/s/hljtep4x for the companion slide deck*
 
+
 # An Introduction to the FHIR API
+Video Tutorial: 
 
 ## Outline
 - [An Introduction to the FHIR API](#an-introduction-to-the-fhir-api)
