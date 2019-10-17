@@ -13,14 +13,16 @@ Video Tutorial: (coming soon)
   - [Overview](#overview)
   - [Learning Objectives](#learning-objectives)
   - [Referenced Resources](#referenced-resources)
+  - [- https://talk.openmrs.org/t/micro-frontends-architecture-for-openmrs/22557](#httpstalkopenmrsorgtmicro-frontends-architecture-for-openmrs22557)
   - [OpenMRS Architecture Overview](#openmrs-architecture-overview)
     - [OpenMRS Modules](#openmrs-modules)
       - [FHIR Module](#fhir-module)
       - [SPA Module](#spa-module)
   - [Microfrontends Architecture Overview](#microfrontends-architecture-overview)
-    - [Import Map](#import-map)
-    - [Frontend Javascript Modules (ESM)](#frontend-javascript-modules-esm)
+    - [Import Map and Frontend Javascript Modules (ESM)](#import-map-and-frontend-javascript-modules-esm)
   - [The Full Picture](#the-full-picture)
+  - [Walkthrough Tutorial](#walkthrough-tutorial)
+  - [Sreenshots](#sreenshots)
   - [To-Do](#to-do)
   - [Notes](#notes)
     - [Wikis etc:](#wikis-etc)
@@ -41,6 +43,17 @@ Please feel free to send feedback / suggestions for improving this tutorial! Thi
 *Note: We won't focus on implementation-specific installation and setup that 
 might concern you for deploying production-ready solutions. See the Implementers Guide for guidance on that.*
 
+
+**End Goal**
+
+You should be able to see the following screens after a successful setup, all running off of the local machine:
+
+![OpenMRS SPA Login](webinar-3-openmrs-spa-login.png)
+
+
+[(click here for full set of screenshots)](#screenshots)
+
+
 ---
 
 ## Learning Objectives
@@ -54,12 +67,14 @@ might concern you for deploying production-ready solutions. See the Implementers
 ---
 
 ## Referenced Resources
-
+- http://devmanual.openmrs.org/en/Technology/getSetUp.html
+- https://wiki.openmrs.org/display/projects/Setup+local+development+environment+for+OpenMRS+SPA
+- https://wiki.openmrs.org/pages/viewpage.action?pageId=224527568
+- https://talk.openmrs.org/t/micro-frontends-architecture-for-openmrs/22557
 --- 
 
 ## OpenMRS Architecture Overview
-
-- OpenMRS core + modules
+http://devmanual.openmrs.org/en/Technology/architecture.html
 
 ### OpenMRS Modules
 
@@ -68,10 +83,11 @@ might concern you for deploying production-ready solutions. See the Implementers
 #### SPA Module
 
 ## Microfrontends Architecture Overview
+https://talk.openmrs.org/t/an-amazing-future-for-openmrs/22328
+- https://talk.openmrs.org/t/micro-frontends-architecture-for-openmrs/22557
 
-### Import Map
-
-### Frontend Javascript Modules (ESM)
+### Import Map and Frontend Javascript Modules (ESM)
+https://wiki.openmrs.org/display/projects/Frontend+Implementer+Documentation
 
 ## The Full Picture
 
@@ -82,8 +98,22 @@ might concern you for deploying production-ready solutions. See the Implementers
 - A cloned SPA module codebase that is compiled locally and used by the OpenMRS server.
 - Cloned codebases for the FHIR and Home Microfrontend javascript modules that compile and are served up locally, and connect to the OpenMRS server using the mentioned SPA module. 
 
-** Visual End Goal: **
+## Walkthrough Tutorial
+http://devmanual.openmrs.org/en/Technology/getSetUp.html
+https://wiki.openmrs.org/display/projects/Setup+local+development+environment+for+OpenMRS+SPA
 
+## Sreenshots
+![OpenMRS Login](webinar-3-openmrs-login.png)
+
+![OpenMRS Admin](webinar-3-openmrs-admin.png)
+
+![OpenMRS Modules](webinar-3-openmrs-modules.png) 
+
+![OpenMRS SPA Login](webinar-3-openmrs-spa-login.png)
+
+![OpenMRS SPA Home](webinar-3-openmrs-spa-home.png)
+
+![OpenMRS SPA ESM](webinar-3-openmrs-spa-esm.png)
 
 ## To-Do
 - [ ] Post to Github and OpenMRS Talk
@@ -97,24 +127,20 @@ might concern you for deploying production-ready solutions. See the Implementers
 
 
 ### Wikis etc:
-- http://booki.flossmanuals.net/openmrs-guide/
-- Read http://write.flossmanuals.net/openmrs-developers-guide/welcome-to-openmrs/
-- https://wiki.openmrs.org/display/docs/Implementer+Documentation
+- http://om.rs/guide
+- http://om.rs/devmanual
 
-OpenMRS Core: Oldschool Standard Java App in Tomcat w/ use of Spring (inversion of control, AOP)
---> requires modules to provide any
---> works well because
+OpenMRS Core:
+Standard Java App in Tomcat w/ use of Spring
 
 OpenMRS Reference App: Core + a standard set of modules
 
 A Distribution: Core + a use-case specific set of modules
 
 ### Installing OpenMRS:
-- For development: https://wiki.openmrs.org/display/docs/OpenMRS+SDK
+- For development: http://om.rs/devmanual
 
 https://wiki.openmrs.org/display/docs/Developer+How-To+Setup+And+Use+IntelliJ
-
-
 
 #### 1. Install Java
 
