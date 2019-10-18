@@ -22,7 +22,10 @@ Video Tutorial: (coming soon)
     - [Import Map and Frontend Javascript Modules (ESM)](#import-map-and-frontend-javascript-modules-esm)
   - [The Full Picture](#the-full-picture)
   - [Walkthrough Tutorial](#walkthrough-tutorial)
-  - [Sreenshots](#sreenshots)
+    - [1. Install Dependencies](#1-install-dependencies)
+    - [2. Clone Relevant Codebases](#2-clone-relevant-codebases)
+    - [3. Set up OpenMRS RefApp](#3-set-up-openmrs-refapp)
+  - [Screenshots](#screenshots)
   - [To-Do](#to-do)
   - [Notes](#notes)
     - [Wikis etc:](#wikis-etc)
@@ -102,7 +105,81 @@ https://wiki.openmrs.org/display/projects/Frontend+Implementer+Documentation
 http://devmanual.openmrs.org/en/Technology/getSetUp.html
 https://wiki.openmrs.org/display/projects/Setup+local+development+environment+for+OpenMRS+SPA
 
-## Sreenshots
+### 1. Install Dependencies
+
+**Java**
+
+Install JDK 8:
+https://docs.oracle.com/javase/8/docs/technotes/guides/install/install_overview.html
+
+```
+> java -version
+
+java version "1.8.0_221"
+Java(TM) SE Runtime Environment (build 1.8.0_221-b11)
+Java HotSpot(TM) 64-Bit Server VM (build 25.221-b11, mixed mode)
+```
+**Maven**
+
+Install Maven:
+http://maven.apache.org/guides/getting-started/maven-in-five-minutes.html
+
+```
+mvn --version
+
+Apache Maven 3.6.2 (40f52333136460af0dc0d7232c0dc0bcf0d9e117; 2019-08-27T08:06:16-07:00)
+Maven home: C:\lib\apache-maven-3.6.2\bin\..
+Java version: 1.8.0_221, vendor: Oracle Corporation, runtime: C:\java\jdk1.8.0_221\jre
+Default locale: en_US, platform encoding: Cp1252
+OS name: "windows 10", version: "10.0", arch: "amd64", family: "windows"
+```
+
+**OpenMRS SDK**
+
+http://devmanual.openmrs.org/en/Technology/getSetUp.html#download-and-install
+https://wiki.openmrs.org/display/docs/OpenMRS+SDK#OpenMRSSDK-Setup
+https://wiki.openmrs.org/display/docs/OpenMRS+SDK+Step+By+Step+Tutorials
+
+```
+mvn org.openmrs.maven.plugins:openmrs-sdk-maven-plugin:setup-sdk
+mvn openmrs-sdk:help
+
+[INFO] Scanning for projects...
+.
+.
+.
+OpenMRS SDK 3.13.2
+
+For more info, see SDK documentation: https://wiki.openmrs.org/display/docs/OpenMRS+SDK
+```
+
+### 2. Clone Relevant Codebases
+
+**OpenMRS FHIR Module**
+`git clone https://github.com/openmrs/openmrs-module-fhir.git`
+
+**OpenMRS SPA Module**
+`git clone https://github.com/openmrs/openmrs-module-spa.git`
+
+**Javascript Modules**
+
+In this example, we will clone the `openmrs-esm-home` and the `openmrs-esm-api` codebases, but feel free to choose whichever `openmrs-esm-*` projects you'd like.
+
+```
+git clone https://github.com/openmrs/openmrs-esm-api.git
+git clone https://github.com/openmrs/openmrs-esm-home.git
+```
+
+### 3. Set up OpenMRS RefApp
+
+We will use the *OpenMRS SDK* to create a local development server running the OpenMRS Reference Application Distribution.
+
+
+
+
+
+
+## Screenshots
 ![OpenMRS Login](webinar-3-openmrs-login.png)
 
 ![OpenMRS Admin](webinar-3-openmrs-admin.png)
