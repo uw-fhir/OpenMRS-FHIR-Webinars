@@ -24,7 +24,9 @@ Video Tutorial: (coming soon)
   - [Walkthrough Tutorial](#walkthrough-tutorial)
     - [1. Install Dependencies](#1-install-dependencies)
     - [2. Clone Relevant Codebases](#2-clone-relevant-codebases)
-    - [3. Set up OpenMRS RefApp](#3-set-up-openmrs-refapp)
+    - [3a. Install MySQL](#3a-install-mysql)
+    - [3b. OR install Docker](#3b-or-install-docker)
+    - [4. Set up OpenMRS RefApp](#4-set-up-openmrs-refapp)
   - [Screenshots](#screenshots)
   - [To-Do](#to-do)
   - [Notes](#notes)
@@ -170,13 +172,56 @@ git clone https://github.com/openmrs/openmrs-esm-api.git
 git clone https://github.com/openmrs/openmrs-esm-home.git
 ```
 
-### 3. Set up OpenMRS RefApp
+### 3a. Install MySQL
+https://dev.mysql.com/doc/refman/8.0/en/general-installation-issues.html
+
+
+### 3b. OR install Docker
+https://docs.docker.com/install/
+
+
+### 4. Set up OpenMRS RefApp
 
 We will use the *OpenMRS SDK* to create a local development server running the OpenMRS Reference Application Distribution.
 
+```
+>> mvn openmrs-sdk:setup -DserverId=openmrs-dev -Ddistro=referenceapplication:2.9.0 -DdbUri=jdbc:mysql://localhost:3306/openmrs -DdbUser=openmrs -DdbPassword=openmrs
 
+...
+What port would you like your server to use? (default: '8080'):
+>> 8080
 
+If you want to enable remote debugging by default when running the server,
+specify the port number here (e.g. 1044). Leave blank to disable debugging.
+(Do not do this on a production server) (default: 'no debugging'):
+>> 1044
 
+Which database would you like to use?:
+1) MySQL 5.6 (requires pre-installed MySQL 5.6)
+2) MySQL 5.6 in SDK docker container (requires pre-installed Docker)
+3) Existing docker container (requires pre-installed Docker)
+
+Which one do you choose? [1/2/3]: 
+>> 1 OR 2
+
+...
+
+Note: JDK 1.8 is needed for platform version 2.1.4.
+
+Which JDK would you like to use to run this server?:
+1) JAVA_HOME (currently: C:\java\jdk1.8.0_221\jre)
+2) Other...
+
+>> 1
+
+[INFO] Server configured successfully, path: C:\Users\piotr\openmrs\openmrs-dev
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  02:48 min
+[INFO] Finished at: 2019-10-21T15:22:18-07:00
+[INFO] ------------------------------------------------------------------------
+```
 
 
 ## Screenshots
