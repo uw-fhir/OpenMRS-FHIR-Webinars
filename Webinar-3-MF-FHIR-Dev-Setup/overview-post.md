@@ -27,16 +27,11 @@ Video Tutorial: (coming soon)
     - [3a. Install MySQL](#3a-install-mysql)
     - [3b. OR install Docker](#3b-or-install-docker)
     - [4. Set up OpenMRS RefApp](#4-set-up-openmrs-refapp)
+    - [5. Build and deploy FHIR and SPA OpenMRS modules](#5-build-and-deploy-fhir-and-spa-openmrs-modules)
+    - [6. Build and locally serve Javascript modules](#6-build-and-locally-serve-javascript-modules)
+    - [7. Test the Setup](#7-test-the-setup)
   - [Screenshots](#screenshots)
   - [To-Do](#to-do)
-  - [Notes](#notes)
-    - [Wikis etc:](#wikis-etc)
-    - [Installing OpenMRS:](#installing-openmrs)
-      - [1. Install Java](#1-install-java)
-      - [2. Install Maven](#2-install-maven)
-      - [3. Install IntelliJ](#3-install-intellij)
-      - [4. Install the OpenMRS SDK](#4-install-the-openmrs-sdk)
-    - [Microfrontends](#microfrontends)
 
 ---
 
@@ -223,6 +218,21 @@ Which JDK would you like to use to run this server?:
 [INFO] ------------------------------------------------------------------------
 ```
 
+### 5. Build and deploy FHIR and SPA OpenMRS modules
+
+```
+
+```
+
+### 6. Build and locally serve Javascript modules
+
+```
+```
+
+### 7. Test the Setup
+
+```
+```
 
 ## Screenshots
 ![OpenMRS Login](webinar-3-openmrs-login.png)
@@ -240,41 +250,3 @@ Which JDK would you like to use to run this server?:
 ## To-Do
 - [ ] Post to Github and OpenMRS Talk
 - [ ] Schedule time for an OpenMRS webinar on this topic
-
------------------
-## Notes
-
-
---- 
-
-
-### Wikis etc:
-- http://om.rs/guide
-- http://om.rs/devmanual
-
-OpenMRS Core:
-Standard Java App in Tomcat w/ use of Spring
-
-OpenMRS Reference App: Core + a standard set of modules
-
-A Distribution: Core + a use-case specific set of modules
-
-### Installing OpenMRS:
-- For development: http://om.rs/devmanual
-
-https://wiki.openmrs.org/display/docs/Developer+How-To+Setup+And+Use+IntelliJ
-
-#### 1. Install Java
-
-#### 2. Install Maven
-
-#### 3. Install IntelliJ 
-
-#### 4. Install the OpenMRS SDK
-
-`mvn openmrs-sdk:setup -DserverId=openmrs-spa -Ddistro=referenceapplication:2.9.0 -DdbUri=jdbc:mysql://localhost:3306/openmrs-spa -DdbUser=openmrs -DdbPassword=openmrs"`
-
-### Microfrontends
-https://talk.openmrs.org/t/an-amazing-future-for-openmrs/22328
-https://github.com/openmrs/openmrs-module-spa/tree/initial-java-module
- 
