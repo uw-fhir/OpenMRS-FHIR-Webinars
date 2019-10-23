@@ -15,8 +15,7 @@ Video Tutorial: (coming soon)
   - [Referenced Resources](#referenced-resources)
   - [- https://talk.openmrs.org/t/micro-frontends-architecture-for-openmrs/22557](#httpstalkopenmrsorgtmicro-frontends-architecture-for-openmrs22557)
   - [OpenMRS Architecture Overview](#openmrs-architecture-overview)
-    - [OpenMRS Modules](#openmrs-modules)
-      - [FHIR Module](#fhir-module)
+  - [OpenMRS FHIR Module Technical Review](#openmrs-fhir-module-technical-review)
       - [SPA Module](#spa-module)
   - [Microfrontends Architecture Overview](#microfrontends-architecture-overview)
     - [Import Map and Frontend Javascript Modules (ESM)](#import-map-and-frontend-javascript-modules-esm)
@@ -76,11 +75,12 @@ You should be able to see the following screens after a successful setup, all ru
 ## OpenMRS Architecture Overview
 http://devmanual.openmrs.org/en/Technology/architecture.html
 
-### OpenMRS Modules
+## OpenMRS FHIR Module Technical Review
 
-#### FHIR Module
+Available here: https://github.com/uw-fhir/OpenMRS-FHIR-Webinars/blob/master/Webinar-3-MF-FHIR-Dev-Setup/tech-review.md
 
 #### SPA Module
+(coming soon)
 
 ## Microfrontends Architecture Overview
 https://talk.openmrs.org/t/an-amazing-future-for-openmrs/22328
@@ -91,7 +91,7 @@ https://wiki.openmrs.org/display/projects/Frontend+Implementer+Documentation
 
 ## The Full Picture
 
-** What we would like to have on our local dev machine:**
+**What we would like to have on our local dev machine:**
 
 - An OpenMRS server running the latest openMRS RefApp distribution.
 - A cloned FHIR module codebase that is compiled locally and used by the OpenMRS server.
@@ -176,8 +176,9 @@ https://docs.docker.com/install/
 
 
 ### 4. Set up OpenMRS RefApp
-
 We will use the *OpenMRS SDK* to create a local development server running the OpenMRS Reference Application Distribution.
+
+https://wiki.openmrs.org/display/docs/OpenMRS+SDK#OpenMRSSDK-Setup
 
 ```
 >> mvn openmrs-sdk:setup -DserverId=openmrs-dev -Ddistro=referenceapplication:2.9.0 -DdbUri=jdbc:mysql://localhost:3306/openmrs -DdbUser=openmrs -DdbPassword=openmrs
@@ -219,18 +220,18 @@ Which JDK would you like to use to run this server?:
 ```
 
 ### 5. Build and deploy FHIR and SPA OpenMRS modules
-
+(coming soon)
 ```
 
 ```
 
 ### 6. Build and locally serve Javascript modules
-
+(coming soon)
 ```
 ```
 
 ### 7. Test the Setup
-
+(coming soon)
 ```
 ```
 
