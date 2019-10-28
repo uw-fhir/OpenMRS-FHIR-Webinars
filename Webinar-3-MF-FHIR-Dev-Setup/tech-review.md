@@ -6,8 +6,8 @@ https://github.com/openmrs/openmrs-module-fhir
   - [Architecture](#architecture)
     - [OpenMRS and OpenMRS Modules](#openmrs-and-openmrs-modules)
     - [The FHIR Module](#the-fhir-module)
-  - [External Dependencies](#external-dependencies)
-    - [HAPI FHIR Libraries](#hapi-fhir-libraries)
+      - [Architecture Diagrams](#architecture-diagrams)
+      - [Code Study: Serving a Patient Resource](#code-study-serving-a-patient-resource)
 
 ## Architecture
 
@@ -45,6 +45,8 @@ https://wiki.openmrs.org/display/projects/OpenMRS+FHIR+Module+Architecture
 
 Conformance Statement: https://openmrs-spa.org/openmrs/ws/fhir/metadata
 
+#### Architecture Diagrams
+
 **Overview and Strategy Pattern**
 https://wiki.openmrs.org/display/projects/FHIR+Strategy+Pattern
 
@@ -64,19 +66,13 @@ https://wiki.openmrs.org/display/projects/FHIR+Strategy+Pattern
 
 ![FHIR Module Architecture](fhir-module-diagram-4.png)
 
-## External Dependencies
+#### Code Study: Serving a Patient Resource
 
-### HAPI FHIR Libraries
+1. https://github.com/openmrs/openmrs-module-fhir/tree/master/api/src/main/java/org/openmrs/module/fhir/api
 
-**FHIR Base**
-https://mvnrepository.com/artifact/ca.uhn.hapi.fhir/hapi-fhir-base/3.1.0 **2.5**
+2. https://github.com/openmrs/openmrs-module-fhir/blob/master/api/src/main/java/org/openmrs/module/fhir/api/util/FHIRPatientUtil.java
 
-**FHIR Structures**
-https://mvnrepository.com/artifact/ca.uhn.hapi.fhir/hapi-fhir-structures-dstu3/1.4
+3. Compare https://hapifhir.io/apidocs-dstu3/org/hl7/fhir/dstu3/model/Patient.html and http://hl7.org/fhir/STU3/patient.html
 
-https://mvnrepository.com/artifact/ca.uhn.hapi.fhir/hapi-fhir-structures-dstu3/2.5?
-
-**Validation**
-https://github.com/jamesagnew/hapi-fhir/tree/master/hapi-fhir-validation-resources-dstu3
-
-
+4. https://github.com/openmrs/openmrs-module-fhir/blob/master/api/src/main/java/org/openmrs/module/fhir/api/strategies/patient/PatientStrategy.java
+   

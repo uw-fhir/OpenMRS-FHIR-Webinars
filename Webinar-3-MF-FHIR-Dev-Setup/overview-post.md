@@ -3,7 +3,6 @@
 
 # Webinar 3 - OpenMRS Dev Setup for FHIR Module and Microfrontends
 
-
 Video Tutorial: (coming soon)
 
 
@@ -39,8 +38,7 @@ This tutorial will be focused on setting up a local development environment usin
 
 Please feel free to send feedback / suggestions for improving this tutorial! This content is based on the availble documentation along with vital input from @psbrandt, and we're definitely looking to improve it with input from the community.
 
-*Note: We won't focus on implementation-specific installation and setup that 
-might concern you for deploying production-ready solutions. See the Implementers Guide for guidance on that.*
+*Note: We won't focus on implementation-specific installation and setup that might concern you for deploying production-ready solutions. See the Implementers Guide for guidance on that.*
 
 
 **End Goal**
@@ -137,9 +135,10 @@ http://devmanual.openmrs.org/en/Technology/getSetUp.html#download-and-install
 https://wiki.openmrs.org/display/docs/OpenMRS+SDK#OpenMRSSDK-Setup
 https://wiki.openmrs.org/display/docs/OpenMRS+SDK+Step+By+Step+Tutorials
 
+
 ```
-mvn org.openmrs.maven.plugins:openmrs-sdk-maven-plugin:setup-sdk
-mvn openmrs-sdk:help
+> mvn org.openmrs.maven.plugins:openmrs-sdk-maven-plugin:setup-sdk
+> mvn openmrs-sdk:help
 
 [INFO] Scanning for projects...
 .
@@ -171,26 +170,44 @@ git clone https://github.com/openmrs/openmrs-esm-home.git
 https://dev.mysql.com/doc/refman/8.0/en/general-installation-issues.html
 
 
+```
+> bin\mysqladmin -u root -p version
+
+Enter password: *****
+bin\mysqladmin  Ver 8.42 Distrib 5.7.27, for Win64 on x86_64
+Copyright (c) 2000, 2019, Oracle and/or its affiliates. All rights reserved.
+.
+.
+.
+
+```
+
 ### 3b. OR install Docker
 https://docs.docker.com/install/
 
+```
+> docker -v
+
+Docker version 19.03.4, build 9013bf5
+```
 
 ### 4. Set up OpenMRS RefApp
-We will use the *OpenMRS SDK* to create a local development server running the OpenMRS Reference Application Distribution.
-
 https://wiki.openmrs.org/display/docs/OpenMRS+SDK#OpenMRSSDK-Setup
 
-```
->> mvn openmrs-sdk:setup -DserverId=openmrs-dev -Ddistro=referenceapplication:2.9.0 -DdbUri=jdbc:mysql://localhost:3306/openmrs -DdbUser=openmrs -DdbPassword=openmrs
+We will use the *OpenMRS SDK* to create a local development server running the OpenMRS Reference Application Distribution.
 
+```
+> mvn openmrs-sdk:setup -DserverId=openmrs-dev -Ddistro=referenceapplication:2.9.0 -DdbUri=jdbc:mysql://localhost:3306/openmrs -DdbUser=openmrs -DdbPassword=openmrs
 ...
+
 What port would you like your server to use? (default: '8080'):
->> 8080
+> 8080
 
 If you want to enable remote debugging by default when running the server,
 specify the port number here (e.g. 1044). Leave blank to disable debugging.
 (Do not do this on a production server) (default: 'no debugging'):
->> 1044
+
+> 1044
 
 Which database would you like to use?:
 1) MySQL 5.6 (requires pre-installed MySQL 5.6)
@@ -198,7 +215,7 @@ Which database would you like to use?:
 3) Existing docker container (requires pre-installed Docker)
 
 Which one do you choose? [1/2/3]: 
->> 1 OR 2
+> <1 OR 2>
 
 ...
 
@@ -210,7 +227,7 @@ Which JDK would you like to use to run this server?:
 
 >> 1
 
-[INFO] Server configured successfully, path: C:\Users\piotr\openmrs\openmrs-dev
+[INFO] Server configured successfully
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
@@ -219,8 +236,41 @@ Which JDK would you like to use to run this server?:
 [INFO] ------------------------------------------------------------------------
 ```
 
+**Test Ref App:**
+
+```
+> mvn openmrs-sdk:run -DserverId=openmrs-dev
+
+[INFO] Scanning for projects...
+[INFO]
+[INFO] ------------------< org.apache.maven:standalone-pom >-------------------
+[INFO] Building Maven Stub Project (No POM) 1
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO]
+[INFO] --- openmrs-sdk-maven-plugin:3.13.2:run (default-cli) @ standalone-pom ---
+
+Checking if port 8080 is in use... [free]
+
+Connect remote debugger with port 1044
+
+Forking a new process... (use -Dfork=false to prevent forking)
+
+Listening for transport dt_socket at address: 1044
+.
+.
+.
+INFO: Starting ProtocolHandler ["http-bio-8080"]
+
+```
+
+
+Open a browser and go to http://localhost:8080/openmrs/. You should see the following page:
+
+![OpenMRS Initial Setup](openmrs-install.png)
+
+Let the setup process complete in peace :smile: It might take quite some time :sleepy: :hourglass:
+
 ### 5. Build and deploy FHIR and SPA OpenMRS modules
-(coming soon)
 ```
 
 ```
