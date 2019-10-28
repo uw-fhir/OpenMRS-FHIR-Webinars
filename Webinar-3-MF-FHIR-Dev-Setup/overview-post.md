@@ -26,9 +26,9 @@ Video Tutorial: (coming soon)
     - [3b. OR install Docker](#3b-or-install-docker)
     - [4. Set up OpenMRS RefApp](#4-set-up-openmrs-refapp)
     - [5. Build and deploy FHIR and SPA OpenMRS modules](#5-build-and-deploy-fhir-and-spa-openmrs-modules)
-    - [6. Build and locally serve Javascript modules](#6-build-and-locally-serve-javascript-modules)
+    - [6. Set up Microfrontends dev environment.](#6-set-up-microfrontends-dev-environment)
     - [7. Test the Setup](#7-test-the-setup)
-  - [Screenshots](#screenshots)
+  - [Additional Screenshots](#additional-screenshots)
   - [To-Do](#to-do)
 
 ---
@@ -163,7 +163,7 @@ In this example, we will clone the `openmrs-esm-home` and the `openmrs-esm-api` 
 
 ```
 git clone https://github.com/openmrs/openmrs-esm-api.git
-git clone https://github.com/openmrs/openmrs-esm-home.git
+git clone https://github.com/openmrs/openmrs-esm-login.git
 ```
 
 ### 3a. Install MySQL
@@ -268,29 +268,137 @@ Open a browser and go to http://localhost:8080/openmrs/. You should see the foll
 
 ![OpenMRS Initial Setup](openmrs-install.png)
 
-Let the setup process complete in peace :smile: It might take quite some time :sleepy: :hourglass:
+Let the setup process complete in peace :smile: It might take quite some time :sleepy: 
+
+:hourglass:  
+:hourglass:  
+:hourglass:
+
+![OpenMRS Login Screen](webinar-3-openmrs-login.png)
+
+Enter the very secure `admin\Admin123` username and password combo, choose a location to "login" from, and you should see the following screen at http://localhost:8080/openmrs/referenceapplication/home.page:
+
+![OpenMRS Homepage](openmrs-setup-3.png)
+
 
 ### 5. Build and deploy FHIR and SPA OpenMRS modules
+https://wiki.openmrs.org/display/docs/OpenMRS+SDK#OpenMRSSDK-Deployingprojects
+
+Go to `System Administration > Advanced Administration > Manage Modules`. 
+
+You should see the following list of modules - note the FHIR module version, and the absense of the OpenMRS SPA module. 
+
+![OpenMRS Modules Pre](openmrs-refapp-modules-1.png)
+
+We'll deploy local versions of our modules using the cloned codebases from earlier.
+
+```
+> cd <path-to-cloned>/openmrs-module-fhir
+
+mvn openmrs-sdk:deploy -DserverId=openmrs-dev
+
+Would you like to deploy fhir 1.20.0-SNAPSHOT from the current directory? [Y/n]: 
+
+> Y
+
+Do you want to update module 'fhir' in version '1.18.0' to version '1.20.0-SNAPSHOT'? [Y/n]:
+
+> Y
+.
+.
+.
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  35.814 s
+[INFO] Finished at: 2019-10-28T11:52:22-07:00
+[INFO] ------------------------------------------------------------------------
 ```
 
 ```
+> cd <path-to-cloned>/openmrs-module-spa
 
-### 6. Build and locally serve Javascript modules
-(coming soon)
+mvn openmrs-sdk:deploy -DserverId=openmrs-dev
+
+.
+.
+.
+
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  5.785 s
+[INFO] Finished at: 2019-10-28T11:54:31-07:00
+[INFO] ------------------------------------------------------------------------
 ```
+
+Now, restart the server: `mvn openmrs-sdk:run -DserverId=openmrs-dev`
+
+Your modules page should look like this:
+![OpenMRS Modules](webinar-3-openmrs-modules.png) 
+
+### 6. Set up Microfrontends dev environment.
+- https://wiki.openmrs.org/display/projects/Frontend+Implementer+Documentation
+- https://wiki.openmrs.org/display/projects/Setup+local+development+environment+for+OpenMRS+SPA
+- https://wiki.openmrs.org/pages/viewpage.action?pageId=224527568
+  - https://wiki.openmrs.org/display/projects/openmrs-esm-login
+  - https://wiki.openmrs.org/display/projects/openmrs-esm-api
+- https://wiki.openmrs.org/display/projects/openmrs-esm-devtools
+- https://github.com/joeldenning/import-map-overrides
+  
+**Prerequesites:**
+- git
+- Node and NPM **Note: `npm run build` in the [Packmap instructions](https://github.com/openmrs/packmap/blob/master/examples/openmrs-example/README.md) caused an error in NPM 8.9, but worked as documented in npm 10. Look into this requirement and document it.**
+
+
+The MF UI requires a couple of different assets to be served ([as specified here]( https://github.com/openmrs/openmrs-module-spa/blob/fdd8bf2719a1c21351ed9497b2e1526c4b7ab61d/omod/src/main/webapp/master-single-page-application.jsp#L14)):
+- The [import map](https://github.com/WICG/import-maps): https://github.com/openmrs/packmap
+- SystemJS: https://github.com/systemjs/systemjs
+
+We need to package the MF ESM packages for local development, as described [here](https://github.com/openmrs/packmap/blob/master/examples/openmrs-example/README.md)
+
+
+```
+> git clone https://github.com/openmrs/packmap.git
+> cd packmap/examples/openmrs-example
+> npm install
+> npm run build
+```
+
+The `packmap/examples/openmrs-example/openmrs/frontend` will include the files that need to go in the `frontend` folder for the OpenMRS server, so we copy the contents over:
+`cp <path-to-packmap-directory>/examples/openmrs-example/openmrs/frontend <path-to-openmrs-server-root>/frontend`
+
+Now, we should be able to access the Microfrontends UI at this address: https://localhost:8080/openmrs/spa
+
+However, we need to make sure that we set an exception for local SSL connections using the following guide for [trusting insecure localhost SSL certificates](https://improveandrepeat.com/2016/09/allowing-self-signed-certificates-on-localhost-with-chrome-and-firefox/).
+
+1. 
+**openmrs-esm-login**
+
+
+```
+
 ```
 
 ### 7. Test the Setup
-(coming soon)
+
+**OpenMRS Reference Application**
 ```
 ```
 
-## Screenshots
-![OpenMRS Login](webinar-3-openmrs-login.png)
+**OpenMRS Microfrontend UI**
+```
+```
+
+
+**OpenMRS FHIR Module**
+```
+```
+
+## Additional Screenshots
 
 ![OpenMRS Admin](webinar-3-openmrs-admin.png)
 
-![OpenMRS Modules](webinar-3-openmrs-modules.png) 
 
 ![OpenMRS SPA Login](webinar-3-openmrs-spa-login.png)
 
