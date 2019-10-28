@@ -30,6 +30,7 @@ Video Tutorial: (coming soon)
     - [7. Test the Setup](#7-test-the-setup)
   - [Additional Screenshots](#additional-screenshots)
   - [To-Do](#to-do)
+  - [Notes](#notes)
 
 ---
 
@@ -392,6 +393,8 @@ However, we need to make sure that we set an exception for local SSL connections
 
 
 **OpenMRS FHIR Module**
+https://wiki.openmrs.org/display/projects/FHIR+Swagger+Documentation
+
 ```
 ```
 
@@ -409,3 +412,7 @@ However, we need to make sure that we set an exception for local SSL connections
 ## To-Do
 - [ ] Post to Github and OpenMRS Talk
 - [ ] Schedule time for an OpenMRS webinar on this topic
+
+
+## Notes
+

@@ -8,6 +8,7 @@ https://github.com/openmrs/openmrs-module-fhir
     - [The FHIR Module](#the-fhir-module)
       - [Architecture Diagrams](#architecture-diagrams)
       - [Code Study: Serving a Patient Resource](#code-study-serving-a-patient-resource)
+      - [Documentation](#documentation)
 
 ## Architecture
 
@@ -75,4 +76,28 @@ https://wiki.openmrs.org/display/projects/FHIR+Strategy+Pattern
 3. Compare https://hapifhir.io/apidocs-dstu3/org/hl7/fhir/dstu3/model/Patient.html and http://hl7.org/fhir/STU3/patient.html
 
 4. https://github.com/openmrs/openmrs-module-fhir/blob/master/api/src/main/java/org/openmrs/module/fhir/api/strategies/patient/PatientStrategy.java
-   
+
+#### Documentation
+
+**Swagger Documentation Generation** 
+
+https://wiki.openmrs.org/display/projects/FHIR+Swagger+Documentation
+* https://wiki.openmrs.org/display/projects/FHIR+Swagger+Document+generator+and+enhancements
+* https://wiki.openmrs.org/display/projects/FHIR+Swagger+Codegen+Integration+and+Strategic+Improvements
+
+What is this generator using exactly to build the Swagger API?
+
+Is it auto-generated or based on the conformance statement? 
+similar approach: 
+https://github.com/rbren/fhir-swagger
+
+
+Answer: generated from conformance, using [this library](https://github.com/openmrs/openmrs-module-fhir/blob/b983f7faab7a4ccfd5724a59888029abb36d3347/omod/src/main/java/org/openmrs/module/fhir/swagger/SwaggerSpecificationCreator.java#L21)
+and this [method](https://github.com/openmrs/openmrs-module-fhir/blob/b983f7faab7a4ccfd5724a59888029abb36d3347/omod/src/main/java/org/openmrs/module/fhir/swagger/SwaggerSpecificationCreator.java#L137)
+
+Related commits:  
+- https://github.com/openmrs/openmrs-module-fhir/commit/6e4ff55fc312ee9d2694a26f4a9cfeb464b4d7d5
+- https://github.com/openmrs/openmrs-module-fhir/commit/74483ded981bb13babd90131e08b76d1b5d2e8be)
+
+https://swagger.io/docs/open-source-tools/swagger-codegen/
+https://github.com/openmrs/openmrs-module-webservices.rest/blob/master/omod-common/src/main/java/org/openmrs/module/webservices/docs/swagger/SwaggerSpecificationCreator.java
