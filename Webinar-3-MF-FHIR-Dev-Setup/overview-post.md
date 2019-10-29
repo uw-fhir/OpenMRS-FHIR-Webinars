@@ -416,3 +416,4 @@ https://wiki.openmrs.org/display/projects/FHIR+Swagger+Documentation
 
 ## Notes
 
+https://wiki.hl7.org/index.php?title=Using_the_FHIR_Validator
