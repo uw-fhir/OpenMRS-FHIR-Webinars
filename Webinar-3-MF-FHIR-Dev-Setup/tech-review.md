@@ -47,8 +47,12 @@ https://github.com/openmrs/openmrs-rfc-frontend/tree/master/text
 ### The FHIR Module
 https://wiki.openmrs.org/display/projects/OpenMRS+FHIR+Module
 https://wiki.openmrs.org/display/projects/OpenMRS+FHIR+Module+Architecture
+http://localhost:8080/openmrs/module/fhir/apidocs.form#/default
+
 
 Conformance Statement: https://openmrs-spa.org/openmrs/ws/fhir/metadata
+Swagger Json: https://openmrs-spa.org/openmrs/module/fhir/rest/swagger.json
+Swagger Docs: 
 
 #### FHIR Constants
 https://github.com/openmrs/openmrs-module-fhir/blob/abfd7dd0f489fe0b59978b26d70f40e2c71415cb/api/src/main/java/org/openmrs/module/fhir/api/util/FHIRConstants.java
@@ -152,3 +156,5 @@ Related commits:
 
 https://swagger.io/docs/open-source-tools/swagger-codegen/
 https://github.com/openmrs/openmrs-module-webservices.rest/blob/master/omod-common/src/main/java/org/openmrs/module/webservices/docs/swagger/SwaggerSpecificationCreator.java
+
+https://wiki.openmrs.org/display/projects/Support+Laboratory+Data+Exchange+with+FHIR
