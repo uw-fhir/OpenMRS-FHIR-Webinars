@@ -395,8 +395,10 @@ However, we need to make sure that we set an exception for local SSL connections
 **OpenMRS FHIR Module**
 https://wiki.openmrs.org/display/projects/FHIR+Swagger+Documentation
 
-http://localhost:8080/openmrs/module/fhir/rest/swagger.json
-http://localhost:8080/openmrs/module/fhir/apidocs.form#/default
+If the FHIR module is installed correctly, you should be able to access the following resources after logging in as `admin\Admin123`:
+
+- http://localhost:8080/openmrs/module/fhir/rest/swagger.json
+- http://localhost:8080/openmrs/module/fhir/apidocs.form#/default
 
 
 ```

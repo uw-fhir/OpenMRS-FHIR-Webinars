@@ -3,18 +3,20 @@
 https://github.com/openmrs/openmrs-module-fhir
 
 - [Technical Review of the OpenMRS FHIR Module](#technical-review-of-the-openmrs-fhir-module)
-  - [Architecture](#architecture)
+  - [OpenMRS Architecture](#openmrs-architecture)
     - [OpenMRS and OpenMRS Modules](#openmrs-and-openmrs-modules)
-    - [The FHIR Module](#the-fhir-module)
-      - [FHIR Constants](#fhir-constants)
-      - [REST Server Initialization](#rest-server-initialization)
-      - [Architecture Diagrams](#architecture-diagrams)
-      - [Code Study: Serving a Patient Resource](#code-study-serving-a-patient-resource)
-      - [Profiles / Resource support](#profiles--resource-support)
-      - [Validation](#validation)
-      - [Documentation](#documentation)
+  - [The FHIR Module](#the-fhir-module)
+    - [Constants](#constants)
+    - [FHIR REST Server Initialization](#fhir-rest-server-initialization)
+    - [Profiles / Resource support](#profiles--resource-support)
+    - [Validation](#validation)
+    - [Architecture](#architecture)
+    - [Case Studies](#case-studies)
+      - [1. The Basics - A GET request for a specific patient using the patient ID**](#1-the-basics---a-get-request-for-a-specific-patient-using-the-patient-id)
+      - [2. iSantéPlus (Haiti) - OpenELIS Interoperability](#2-isant%c3%a9plus-haiti---openelis-interoperability)
+    - [Notes](#notes)
 
-## Architecture
+## OpenMRS Architecture
 
 ### OpenMRS and OpenMRS Modules
 http://devmanual.openmrs.org/en/Technology/architecture.html 
@@ -31,7 +33,7 @@ http://devmanual.openmrs.org/en/Technology/architecture.html#the-modular-archite
   
 **Spring**
 Application development framework
-- support MVC model 
+- supports MVC model 
 - Aspect-oriented programming
   
 **Presentation**
@@ -44,24 +46,65 @@ https://github.com/openmrs/openmrs-rfc-frontend/tree/master/text
 
 ---
 
-### The FHIR Module
+## The FHIR Module
 https://wiki.openmrs.org/display/projects/OpenMRS+FHIR+Module
 https://wiki.openmrs.org/display/projects/OpenMRS+FHIR+Module+Architecture
 http://localhost:8080/openmrs/module/fhir/apidocs.form#/default
 
 
-Conformance Statement: https://openmrs-spa.org/openmrs/ws/fhir/metadata
-Swagger Json: https://openmrs-spa.org/openmrs/module/fhir/rest/swagger.json
-Swagger Docs: 
+*Note: access these resources after logging in as `admin\Admin123`*
 
-#### FHIR Constants
+- Conformance Statement: https://openmrs-spa.org/openmrs/ws/fhir/metadata
+- Swagger Json: https://openmrs-spa.org/openmrs/module/fhir/rest/swagger.json
+- Swagger Docs: https://openmrs-spa.org/openmrs/module/fhir/apidocs.form#/default
+
+### Constants
+
 https://github.com/openmrs/openmrs-module-fhir/blob/abfd7dd0f489fe0b59978b26d70f40e2c71415cb/api/src/main/java/org/openmrs/module/fhir/api/util/FHIRConstants.java
 
-#### REST Server Initialization
+https://github.com/openmrs/openmrs-module-fhir/blob/master/omod/src/main/java/org/openmrs/module/fhir/util/FHIROmodConstants.java
+
+### FHIR REST Server Initialization
 https://github.com/openmrs/openmrs-module-fhir/blob/b983f7faab7a4ccfd5724a59888029abb36d3347/omod/src/main/java/org/openmrs/module/fhir/server/FHIRRESTServer.java#L46
 
-#### Architecture Diagrams
+### Profiles / Resource support
+https://hapifhir.io/doc_extensions.html#_toc_custom_resource_types
 
+Does not seem like the FHIR module extends any resources or defines any profiles, at least how the link above suggests it to be done. 
+
+    * Note the "profile" attribute below, which indicates the URL/ID of the
+    * profile implemented by this resource. You are not required to supply this,
+    * but if you do it will be automatically populated in the resource meta
+    * tag if the resource is returned by a server.
+
+Here's a FHIR patient resource def: https://github.com/openmrs/openmrs-module-fhir/blob/master/omod/src/main/java/org/openmrs/module/fhir/resources/FHIRPatientResource.java
+
+
+### Validation 
+https://github.com/openmrs/openmrs-module-fhir/blob/abfd7dd0f489fe0b59978b26d70f40e2c71415cb/api/src/main/java/org/openmrs/module/fhir/api/util/FHIRUtils.java#L54
+
+https://hapifhir.io/doc_validation.html
+```
+import ca.uhn.fhir.context.FhirContext;
+import ca.uhn.fhir.validation.FhirValidator;
+import ca.uhn.fhir.validation.ValidationResult;
+
+import org.openmrs.api.context.Context;
+import org.openmrs.module.fhir.api.manager.FHIRContextFactory;
+
+
+private static FhirContext ctx = FHIRContextFactory.getFHIRContext();
+
+private static FhirValidator val = ctx.newValidator();
+```
+
+- https://github.com/openmrs/openmrs-module-fhir/search?q=validate&unscoped_q=validate
+- https://wiki.hl7.org/index.php?title=Using_the_FHIR_Validator
+- 
+
+- https://github.com/openmrs/openmrs-module-fhir/blob/abfd7dd0f489fe0b59978b26d70f40e2c71415cb/api/src/main/java/org/openmrs/module/fhir/api/validator/SpecificObsValidator.java
+
+### Architecture
 **Overview and Strategy Pattern**
 https://wiki.openmrs.org/display/projects/FHIR+Strategy+Pattern
 https://wiki.openmrs.org/display/projects/OpenMRS+FHIR+Module+Development%3A+Phase+01
@@ -82,7 +125,11 @@ https://wiki.openmrs.org/display/projects/OpenMRS+FHIR+Module+Development%3A+Pha
 
 ![FHIR Module Architecture](fhir-module-diagram-4.png)
 
-#### Code Study: Serving a Patient Resource
+
+
+### Case Studies
+
+#### 1. The Basics - A GET request for a specific patient using the patient ID**
 
 1. https://github.com/openmrs/openmrs-module-fhir/tree/master/api/src/main/java/org/openmrs/module/fhir/api
 
@@ -92,47 +139,45 @@ https://wiki.openmrs.org/display/projects/OpenMRS+FHIR+Module+Development%3A+Pha
 
 4. https://github.com/openmrs/openmrs-module-fhir/blob/master/api/src/main/java/org/openmrs/module/fhir/api/strategies/patient/PatientStrategy.java
 
-#### Profiles / Resource support
-https://hapifhir.io/doc_extensions.html#_toc_custom_resource_types
+#### 2. iSantéPlus (Haiti) - OpenELIS Interoperability
+**Workflow 1 - New Lab Order**
 
-Does not seem like the FHIR module extends any resources or defines any profiles, at least how the link above suggests it to be done. 
+In this workflow, a lab order is created in iSantéPlus and sent to OpenELIS. 
 
-    * Note the "profile" attribute below, which indicates the URL/ID of the
-    * profile implemented by this resource. You are not required to supply this,
-    * but if you do it will be automatically populated in the resource meta
-    * tag if the resource is returned by a server.
+Currently, the workflow is implemented using the HL7 V2 messages ([as defined starting on page 13 in this IHE PDF](http://www.ihe.net/uploadedFiles/Documents/PaLM/IHE_PaLM_TF_Vol2a.pdf)). The current solution uses the following messages:
 
-Here's a FHIR patient resource def: https://github.com/openmrs/openmrs-module-fhir/blob/master/omod/src/main/java/org/openmrs/module/fhir/resources/FHIRPatientResource.java
+- OML^O21^OML_O21: laboratory order message. 
+- ORL^O22^ORL_O22: Acknowledgement for OML^O21^OML_O21
 
+![Data Flow](lab-usecase-current-flow.png)
 
-#### Validation 
-https://github.com/openmrs/openmrs-module-fhir/blob/abfd7dd0f489fe0b59978b26d70f40e2c71415cb/api/src/main/java/org/openmrs/module/fhir/api/util/FHIRUtils.java#L54
+![Data Flow](lab-usecase-data-def.png)
 
-https://hapifhir.io/doc_validation.html
-```
-import ca.uhn.fhir.context.FhirContext;
-import ca.uhn.fhir.validation.FhirValidator;
-import ca.uhn.fhir.validation.ValidationResult;
+The HL7V2 message is packaged in a XDS document, and OpenELIS is notified that the message is ready for reading. OpenELIS then reads the message, validates it, and sends back an awknowledgment to iSantéPlus. If any errors occur, they are properly handled. 
 
-import org.openmrs.api.context.Context;
-import org.openmrs.module.fhir.api.manager.FHIRContextFactory;
+Objective: Implement this specific workflow using the FHIR module and FHIR Observation / other resources instead of HL7 V2 and [OpenXDS](http://www.openempi.org/confluence/display/openxds/Home).  
 
+**Quick First Exercise: How does the FHIR Module handle a `GET` request for an `Observation` resource?**
 
-private static FhirContext ctx = FHIRContextFactory.getFHIRContext();
+1. Use the FHIR client
+2. (Use Postman?)
+3. (Use ClinFHIR/other clients?)
 
-private static FhirValidator val = ctx.newValidator();
+4. Conformance Statement for Observation
+5. Swagger Doc for Observation
+6. FHIR Server Constants and Definition
+7. Flow --> Validation
+8. 
 
+**Implementation Details and Gaps:**
 
-```
+Are the data attributes required in the workflow supported by the current implementation of the Observation resource?
 
-- https://github.com/openmrs/openmrs-module-fhir/search?q=validate&unscoped_q=validate
-- https://wiki.hl7.org/index.php?title=Using_the_FHIR_Validator
-- 
+Is there a mechanism for correctly validating the FHIR resource / resources sent as part of this transaction?
 
-- https://github.com/openmrs/openmrs-module-fhir/blob/abfd7dd0f489fe0b59978b26d70f40e2c71415cb/api/src/main/java/org/openmrs/module/fhir/api/validator/SpecificObsValidator.java
+Has the OpenELIS team considered this workflow in their work on their FHIR Module?
 
-
-#### Documentation
+### Notes
 
 **Swagger Documentation Generation** 
 
@@ -155,6 +200,8 @@ Related commits:
 - https://github.com/openmrs/openmrs-module-fhir/commit/74483ded981bb13babd90131e08b76d1b5d2e8be)
 
 https://swagger.io/docs/open-source-tools/swagger-codegen/
+
 https://github.com/openmrs/openmrs-module-webservices.rest/blob/master/omod-common/src/main/java/org/openmrs/module/webservices/docs/swagger/SwaggerSpecificationCreator.java
 
 https://wiki.openmrs.org/display/projects/Support+Laboratory+Data+Exchange+with+FHIR
+
