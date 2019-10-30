@@ -8,13 +8,14 @@ https://github.com/openmrs/openmrs-module-fhir
   - [The FHIR Module](#the-fhir-module)
     - [Constants](#constants)
     - [FHIR REST Server Initialization](#fhir-rest-server-initialization)
-    - [Profiles / Resource support](#profiles--resource-support)
-    - [Validation](#validation)
     - [Architecture](#architecture)
   - [Case Studies](#case-studies)
     - [1. The Basics - A GET request for a specific patient using the patient ID**](#1-the-basics---a-get-request-for-a-specific-patient-using-the-patient-id)
     - [2. iSantéPlus (Haiti) - OpenELIS Interoperability](#2-isant%c3%a9plus-haiti---openelis-interoperability)
   - [Notes](#notes)
+    - [Swagger Documentation Generation](#swagger-documentation-generation)
+    - [Validation](#validation)
+    - [Profiles / Resource support](#profiles--resource-support)
 
 ## OpenMRS Architecture
 
@@ -66,43 +67,6 @@ https://github.com/openmrs/openmrs-module-fhir/blob/master/omod/src/main/java/or
 
 ### FHIR REST Server Initialization
 https://github.com/openmrs/openmrs-module-fhir/blob/b983f7faab7a4ccfd5724a59888029abb36d3347/omod/src/main/java/org/openmrs/module/fhir/server/FHIRRESTServer.java#L46
-
-### Profiles / Resource support
-https://hapifhir.io/doc_extensions.html#_toc_custom_resource_types
-
-Does not seem like the FHIR module extends any resources or defines any profiles, at least how the link above suggests it to be done. 
-
-    * Note the "profile" attribute below, which indicates the URL/ID of the
-    * profile implemented by this resource. You are not required to supply this,
-    * but if you do it will be automatically populated in the resource meta
-    * tag if the resource is returned by a server.
-
-Here's a FHIR patient resource def: https://github.com/openmrs/openmrs-module-fhir/blob/master/omod/src/main/java/org/openmrs/module/fhir/resources/FHIRPatientResource.java
-
-
-### Validation 
-https://github.com/openmrs/openmrs-module-fhir/blob/abfd7dd0f489fe0b59978b26d70f40e2c71415cb/api/src/main/java/org/openmrs/module/fhir/api/util/FHIRUtils.java#L54
-
-https://hapifhir.io/doc_validation.html
-```
-import ca.uhn.fhir.context.FhirContext;
-import ca.uhn.fhir.validation.FhirValidator;
-import ca.uhn.fhir.validation.ValidationResult;
-
-import org.openmrs.api.context.Context;
-import org.openmrs.module.fhir.api.manager.FHIRContextFactory;
-
-
-private static FhirContext ctx = FHIRContextFactory.getFHIRContext();
-
-private static FhirValidator val = ctx.newValidator();
-```
-
-- https://github.com/openmrs/openmrs-module-fhir/search?q=validate&unscoped_q=validate
-- https://wiki.hl7.org/index.php?title=Using_the_FHIR_Validator
-- 
-
-- https://github.com/openmrs/openmrs-module-fhir/blob/abfd7dd0f489fe0b59978b26d70f40e2c71415cb/api/src/main/java/org/openmrs/module/fhir/api/validator/SpecificObsValidator.java
 
 ### Architecture
 **Overview and Strategy Pattern**
@@ -162,19 +126,27 @@ The HL7V2 message is packaged in a XDS document, and OpenELIS is notified that t
 
 Objective: Implement this specific workflow using the FHIR module and FHIR Observation / other resources instead of HL7 V2 and [OpenXDS](http://www.openempi.org/confluence/display/openxds/Home).  
 
-**Quick First Exercise: How does the FHIR Module handle a `GET` request for an `Observation` resource?**
+**How does the FHIR Module handle a `GET` request for an `Observation` resource?**
 
-**Conformance Statement for the Observation Resource**
+*Conformance Statement for the Observation Resource*  
+(see [here](#profiles--resource-support) for related notes)
 
-**Swagger Doc for the Observation Resource**
+*Swagger Doc for the Observation Resource*   
+(see [here](#swagger-documentation-generation) for related notes)
 
-**FHIR Server Definition**
+*FHIR Server Definition*
 
-**Code Run-Through: Use the FHIR Client to query the FHIR Server**
+---
+
+**Code Run-Through: Use the FHIR Client to query the FHIR Server for an Observation resource**
    * How is the request routed? Where are routes defined?
+  
    * What controller handles the request?
+
    * Where is the OpenMRS data model queried to retrieve requested object?
+
    * Where is this OpenMRS object used to create a FHIR Resource object?
+
    * Where is this FHIR Resource Validated? What rules / profiles is it being validated against? Is this level of validation sufficient for our usecase?
   
 **Implementation Details and Gaps:**
@@ -185,10 +157,11 @@ Is there a mechanism for correctly validating the FHIR resource / resources sent
 
 Has the OpenELIS team considered this workflow in their work on their FHIR Module?
 
+---
 
 ## Notes
 
-**Swagger Documentation Generation** 
+### Swagger Documentation Generation
 
 https://wiki.openmrs.org/display/projects/FHIR+Swagger+Documentation
 * https://wiki.openmrs.org/display/projects/FHIR+Swagger+Document+generator+and+enhancements
@@ -214,3 +187,41 @@ https://github.com/openmrs/openmrs-module-webservices.rest/blob/master/omod-comm
 
 https://wiki.openmrs.org/display/projects/Support+Laboratory+Data+Exchange+with+FHIR
 
+---
+
+### Validation
+- https://hapifhir.io/doc_validation.html
+- https://github.com/openmrs/openmrs-module-fhir/blob/abfd7dd0f489fe0b59978b26d70f40e2c71415cb/api/src/main/java/org/openmrs/module/fhir/api/util/FHIRUtils.java#L54
+- https://github.com/openmrs/openmrs-module-fhir/search?q=validate&unscoped_q=validate
+- https://wiki.hl7.org/index.php?title=Using_the_FHIR_Validator
+
+- https://github.com/openmrs/openmrs-module-fhir/blob/abfd7dd0f489fe0b59978b26d70f40e2c71415cb/api/src/main/java/org/openmrs/module/fhir/api/validator/SpecificObsValidator.java
+
+
+```
+import ca.uhn.fhir.context.FhirContext;
+import ca.uhn.fhir.validation.FhirValidator;
+import ca.uhn.fhir.validation.ValidationResult;
+
+import org.openmrs.api.context.Context;
+import org.openmrs.module.fhir.api.manager.FHIRContextFactory;
+
+
+private static FhirContext ctx = FHIRContextFactory.getFHIRContext();
+
+private static FhirValidator val = ctx.newValidator();
+```
+
+---
+
+### Profiles / Resource support
+https://hapifhir.io/doc_extensions.html#_toc_custom_resource_types
+
+Does not seem like the FHIR module extends any resources or defines any profiles, at least how the link above suggests it to be done. 
+
+    * Note the "profile" attribute below, which indicates the URL/ID of the
+    * profile implemented by this resource. You are not required to supply this,
+    * but if you do it will be automatically populated in the resource meta
+    * tag if the resource is returned by a server.
+
+Here's a FHIR patient resource def: https://github.com/openmrs/openmrs-module-fhir/blob/master/omod/src/main/java/org/openmrs/module/fhir/resources/FHIRPatientResource.java
