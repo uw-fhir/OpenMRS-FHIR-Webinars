@@ -11,10 +11,10 @@ https://github.com/openmrs/openmrs-module-fhir
     - [Profiles / Resource support](#profiles--resource-support)
     - [Validation](#validation)
     - [Architecture](#architecture)
-    - [Case Studies](#case-studies)
-      - [1. The Basics - A GET request for a specific patient using the patient ID**](#1-the-basics---a-get-request-for-a-specific-patient-using-the-patient-id)
-      - [2. iSantéPlus (Haiti) - OpenELIS Interoperability](#2-isant%c3%a9plus-haiti---openelis-interoperability)
-    - [Notes](#notes)
+  - [Case Studies](#case-studies)
+    - [1. The Basics - A GET request for a specific patient using the patient ID**](#1-the-basics---a-get-request-for-a-specific-patient-using-the-patient-id)
+    - [2. iSantéPlus (Haiti) - OpenELIS Interoperability](#2-isant%c3%a9plus-haiti---openelis-interoperability)
+  - [Notes](#notes)
 
 ## OpenMRS Architecture
 
@@ -127,9 +127,11 @@ https://wiki.openmrs.org/display/projects/OpenMRS+FHIR+Module+Development%3A+Pha
 
 
 
-### Case Studies
+## Case Studies
 
-#### 1. The Basics - A GET request for a specific patient using the patient ID**
+--- 
+
+### 1. The Basics - A GET request for a specific patient using the patient ID**
 
 1. https://github.com/openmrs/openmrs-module-fhir/tree/master/api/src/main/java/org/openmrs/module/fhir/api
 
@@ -139,7 +141,10 @@ https://wiki.openmrs.org/display/projects/OpenMRS+FHIR+Module+Development%3A+Pha
 
 4. https://github.com/openmrs/openmrs-module-fhir/blob/master/api/src/main/java/org/openmrs/module/fhir/api/strategies/patient/PatientStrategy.java
 
-#### 2. iSantéPlus (Haiti) - OpenELIS Interoperability
+--- 
+
+### 2. iSantéPlus (Haiti) - OpenELIS Interoperability
+
 **Workflow 1 - New Lab Order**
 
 In this workflow, a lab order is created in iSantéPlus and sent to OpenELIS. 
@@ -159,16 +164,19 @@ Objective: Implement this specific workflow using the FHIR module and FHIR Obser
 
 **Quick First Exercise: How does the FHIR Module handle a `GET` request for an `Observation` resource?**
 
-1. Use the FHIR client
-2. (Use Postman?)
-3. (Use ClinFHIR/other clients?)
+**Conformance Statement for the Observation Resource**
 
-4. Conformance Statement for Observation
-5. Swagger Doc for Observation
-6. FHIR Server Constants and Definition
-7. Flow --> Validation
-8. 
+**Swagger Doc for the Observation Resource**
 
+**FHIR Server Definition**
+
+**Code Run-Through: Use the FHIR Client to query the FHIR Server**
+   * How is the request routed? Where are routes defined?
+   * What controller handles the request?
+   * Where is the OpenMRS data model queried to retrieve requested object?
+   * Where is this OpenMRS object used to create a FHIR Resource object?
+   * Where is this FHIR Resource Validated? What rules / profiles is it being validated against? Is this level of validation sufficient for our usecase?
+  
 **Implementation Details and Gaps:**
 
 Are the data attributes required in the workflow supported by the current implementation of the Observation resource?
@@ -177,7 +185,8 @@ Is there a mechanism for correctly validating the FHIR resource / resources sent
 
 Has the OpenELIS team considered this workflow in their work on their FHIR Module?
 
-### Notes
+
+## Notes
 
 **Swagger Documentation Generation** 
 
