@@ -16,6 +16,7 @@ https://github.com/openmrs/openmrs-module-fhir
     - [Swagger Documentation Generation](#swagger-documentation-generation)
     - [Validation](#validation)
     - [Profiles / Resource support](#profiles--resource-support)
+    - [FHIR Module Architecture and Migration Plan](#fhir-module-architecture-and-migration-plan)
 
 ## OpenMRS Architecture
 
@@ -74,22 +75,6 @@ https://wiki.openmrs.org/display/projects/FHIR+Strategy+Pattern
 https://wiki.openmrs.org/display/projects/OpenMRS+FHIR+Module+Development%3A+Phase+01
 
 ![FHIR Module Architecture](fhir-module-diagram-1.png)
-
-**Rollout Plan**
-
-![FHIR Module Architecture](fhir-module-diagram-2-1.png)
-![FHIR Module Architecture](fhir-module-diagram-2-2.png)
-![FHIR Module Architecture](fhir-module-diagram-2-3.png)
-
-**Current situation vs. Potential Outcome**
-
-![FHIR Module Architecture](fhir-module-diagram-3.png)
-
-**Smart on FHIR Model**
-
-![FHIR Module Architecture](fhir-module-diagram-4.png)
-
-
 
 ## Case Studies
 
@@ -225,3 +210,23 @@ Does not seem like the FHIR module extends any resources or defines any profiles
     * tag if the resource is returned by a server.
 
 Here's a FHIR patient resource def: https://github.com/openmrs/openmrs-module-fhir/blob/master/omod/src/main/java/org/openmrs/module/fhir/resources/FHIRPatientResource.java
+
+---
+
+### FHIR Module Architecture and Migration Plan
+
+**Rollout Plan**
+
+![FHIR Module Architecture](fhir-module-diagram-2-1.png)
+![FHIR Module Architecture](fhir-module-diagram-2-2.png)
+![FHIR Module Architecture](fhir-module-diagram-2-3.png)
+
+
+**Current situation vs. Potential Outcome**
+
+![FHIR Module Architecture](fhir-module-diagram-3.png)
+
+**Smart on FHIR Model**
+
+![FHIR Module Architecture](fhir-module-diagram-4.png)
+
