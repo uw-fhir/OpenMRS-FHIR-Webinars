@@ -366,8 +366,9 @@ We need to package the MF ESM packages for local development, as described [here
 > npm run build
 ```
 
-The `packmap/examples/openmrs-example/openmrs/frontend` will include the files that need to go in the `frontend` folder for the OpenMRS server, so we copy the contents over:
-`cp <path-to-packmap-directory>/examples/openmrs-example/openmrs/frontend <path-to-openmrs-server-root>/frontend`
+The `packmap/examples/openmrs-example/openmrs/frontend` will include the files that need to go in the `frontend` folder for the OpenMRS server, so we symlink the contents in:
+
+`ln -s <path-to-packmap-directory>/examples/openmrs-example/openmrs/frontend <path-to-openmrs-server-root>/`
 
 Now, we should be able to access the Microfrontends UI at this address: https://localhost:8080/openmrs/spa
 
