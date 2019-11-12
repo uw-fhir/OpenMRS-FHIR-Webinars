@@ -1,5 +1,5 @@
 
-*Check out the [Webinars Github Page](https://github.com/uw-fhir/OpenMRS-FHIR-Webinars/) for another view of these tutorial*\
+*Check out the [Webinars Github Page](https://github.com/uw-fhir/OpenMRS-FHIR-Webinars/) for another view of these tutorial*
 
 # Webinar 3 - OpenMRS Dev Setup for FHIR Module and Microfrontends
 
@@ -27,6 +27,7 @@ Video Tutorial: (coming soon)
     - [4. Set up OpenMRS RefApp](#4-set-up-openmrs-refapp)
     - [5. Build and deploy FHIR and SPA OpenMRS modules](#5-build-and-deploy-fhir-and-spa-openmrs-modules)
     - [6. Set up Microfrontends dev environment.](#6-set-up-microfrontends-dev-environment)
+    - [7. Postman](#7-postman)
     - [7. Test the Setup](#7-test-the-setup)
   - [Additional Screenshots](#additional-screenshots)
   - [To-Do](#to-do)
@@ -237,11 +238,24 @@ Which JDK would you like to use to run this server?:
 [INFO] ------------------------------------------------------------------------
 ```
 
-**Test Ref App:**
+**Demo Patients**
+https://wiki.openmrs.org/display/RES/Demo+Data
 
-```
+> For the OpenMRS Reference Application, just set the setting named 
+> `referencedemodata.createDemoPatientsOnNextStartup` to the number of demo
+> patients you want created and restart the application. 
+> 
+> The setting `referencedemodata.createDemoPatientsOnNextStartup` is accessible 
+> through the new UI via `Home > System Administration > Manage Global Properties`. 
+> 
+> It is also accessible through the old admin UI in `Maintenance > Advanced Settings`.
+
+
+**Test the Ref App:**
+
 > mvn openmrs-sdk:run -DserverId=openmrs-dev
 
+```
 [INFO] Scanning for projects...
 [INFO]
 [INFO] ------------------< org.apache.maven:standalone-pom >-------------------
@@ -261,12 +275,11 @@ Listening for transport dt_socket at address: 1044
 .
 .
 INFO: Starting ProtocolHandler ["http-bio-8080"]
-
 ```
 
+Open a browser and go to http://localhost:8080/openmrs/. 
 
-Open a browser and go to http://localhost:8080/openmrs/. You should see the following page:
-
+You should see the following page:
 ![OpenMRS Initial Setup](openmrs-install.png)
 
 Let the setup process complete in peace :smile: It might take quite some time :sleepy: 
@@ -280,7 +293,6 @@ Let the setup process complete in peace :smile: It might take quite some time :s
 Enter the very secure `admin\Admin123` username and password combo, choose a location to "login" from, and you should see the following screen at http://localhost:8080/openmrs/referenceapplication/home.page:
 
 ![OpenMRS Homepage](openmrs-setup-3.png)
-
 
 ### 5. Build and deploy FHIR and SPA OpenMRS modules
 https://wiki.openmrs.org/display/docs/OpenMRS+SDK#OpenMRSSDK-Deployingprojects
@@ -348,16 +360,15 @@ Your modules page should look like this:
 - https://github.com/joeldenning/import-map-overrides
   
 **Prerequesites:**
-- git
-- Node and NPM **Note: `npm run build` in the [Packmap instructions](https://github.com/openmrs/packmap/blob/master/examples/openmrs-example/README.md) caused an error in NPM 8.9, but worked as documented in npm 10. Look into this requirement and document it.**
-
+- Git
+- Node and NPM 
+  **Note: `npm run build` in the [Packmap instructions](https://github.com/openmrs/packmap/blob/master/examples/openmrs-example/README.md) caused an error in NPM 8.9, but worked as documented in npm 10. Look into this requirement and document it.**
 
 The MF UI requires a couple of different assets to be served ([as specified here]( https://github.com/openmrs/openmrs-module-spa/blob/fdd8bf2719a1c21351ed9497b2e1526c4b7ab61d/omod/src/main/webapp/master-single-page-application.jsp#L14)):
 - The [import map](https://github.com/WICG/import-maps): https://github.com/openmrs/packmap
 - SystemJS: https://github.com/systemjs/systemjs
 
 We need to package the MF ESM packages for local development, as described [here](https://github.com/openmrs/packmap/blob/master/examples/openmrs-example/README.md)
-
 
 ```
 > git clone https://github.com/openmrs/packmap.git
@@ -373,13 +384,23 @@ Now, we should be able to access the Microfrontends UI at this address: https://
 
 However, we need to make sure that we set an exception for local SSL connections using the following guide for [trusting insecure localhost SSL certificates](https://improveandrepeat.com/2016/09/allowing-self-signed-certificates-on-localhost-with-chrome-and-firefox/).
 
-1. 
-**openmrs-esm-login**
+### 7. Postman
+https://learning.getpostman.com/docs/postman/sending-api-requests/interceptor-extension/
+https://blog.getpostman.com/2019/06/24/introducing-interceptor-integration-for-native-postman-apps/
 
+In order to more easily send and analyse API requests to the local OpenMRS server, we can use *Postman*. In order for the requests to get through the authentication, we can set up the capture of Chrome cookies using the *Postman* interceptor. As a result, requests sent from the native *Postman* app will use the same session cookies as the Chrome browser, allowing us to log in using the browser, capture the generated cookies using the *Interceptor*, and then switch to sending requests using *Postman*.
 
-```
+1. Download and install *Postman* from https://www.getpostman.com/
 
-```
+2. Download and install the *Postman Interceptor Bridge* for your OS from here: https://learning.getpostman.com/docs/postman/sending-api-requests/interceptor-extension/#installing-the-interceptor-bridge
+
+3. Install the *Postman Interceptor* Chrome Extension from here: https://go.pstmn.io/interceptor-download
+
+4. Start *Postman* and click the `satellite` button in the top corner. Click on the `Cookies` tab, and you should see a message that says `Interceptor Connected` and a green dot. 
+
+5. Turn on Cookie caputre and put in your local dev address/port in the `Domains` section. Your screen should look like this: 
+
+![Postman Setup](postman-cookies-setup.png)
 
 ### 7. Test the Setup
 
@@ -423,3 +444,5 @@ If the FHIR module is installed correctly, you should be able to access the foll
 ## Notes
 
 https://wiki.hl7.org/index.php?title=Using_the_FHIR_Validator
+
+Sample Data?
