@@ -26,7 +26,6 @@ Video: (coming soon)
     - [8. Test the Setup](#8-test-the-setup)
   - [Webinar Questions](#webinar-questions)
   - [Additional Screenshots](#additional-screenshots)
-  - [To-Do](#to-do)
   - [Notes](#notes)
 
 ---
@@ -407,7 +406,7 @@ In order to more easily send and analyse API requests to the local OpenMRS serve
 
 4. Start *Postman* and click the `satellite` button in the top corner. Click on the `Cookies` tab, and you should see a message that says `Interceptor Connected` and a green dot. 
 
-5. Turn on Cookie caputre and put in your local dev address/port in the `Domains` section. Your screen should look like this: 
+5. Turn on Cookie capture and put in your local dev address/port in the `Domains` section. Your screen should look like this: 
 
 ![Postman Setup](postman-cookies-setup.png)
 
@@ -438,10 +437,20 @@ To test out our OpenMRS Ref App, we will create a patient using the UI. We will 
 
 9. Copy the request url and create a Postman request using it. Make sure you're caputring the cookies!
     
+**Debugging the Reference App using IntelliJ**
 
+https://wiki.openmrs.org/display/docs/OpenMRS+SDK#OpenMRSSDK-Debugging
+
+`mvn openmrs-sdk:run -DserverId=openmrs-dev -Ddebug`
+
+Remote Debug Setup:  
+https://www.jetbrains.com/help/idea/run-debug-configuration-remote-debug.html
 
 **OpenMRS Microfrontend UI**
 To test out the Microfrontends setup, we'll use the config module to change the logo of the OpenMRS MF login screen. 
+
+
+
 
 ## Webinar Questions
 *This is a list of questions that came up during the webinar, along with eventual answers/clarifications*
@@ -459,14 +468,6 @@ To test out the Microfrontends setup, we'll use the config module to change the 
 
 ![OpenMRS SPA ESM](webinar-3-openmrs-spa-esm.png)
 
-## To-Do
-- [ ] Post to Github and OpenMRS Talk
-- [ ] Schedule time for an OpenMRS webinar on this topic
-
-
 ## Notes
 
 https://wiki.hl7.org/index.php?title=Using_the_FHIR_Validator
-
-Sample Data?
-''
