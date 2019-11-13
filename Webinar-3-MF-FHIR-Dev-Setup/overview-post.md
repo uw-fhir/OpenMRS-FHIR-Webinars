@@ -14,10 +14,6 @@ Video Tutorial: (coming soon)
   - [Referenced Resources](#referenced-resources)
   - [- https://talk.openmrs.org/t/micro-frontends-architecture-for-openmrs/22557](#httpstalkopenmrsorgtmicro-frontends-architecture-for-openmrs22557)
   - [OpenMRS Architecture Overview](#openmrs-architecture-overview)
-  - [OpenMRS FHIR Module Technical Review](#openmrs-fhir-module-technical-review)
-      - [SPA Module](#spa-module)
-  - [Microfrontends Architecture Overview](#microfrontends-architecture-overview)
-    - [Import Map and Frontend Javascript Modules (ESM)](#import-map-and-frontend-javascript-modules-esm)
   - [The Full Picture](#the-full-picture)
   - [Walkthrough Tutorial](#walkthrough-tutorial)
     - [1. Install Dependencies](#1-install-dependencies)
@@ -61,8 +57,8 @@ You should be able to see the following screens after a successful setup, all ru
 1. Gain a birds-eye view understanding of the OpenMRS reference application architecture.
 2. Understand how the FHIR Module is integrated into the RefApp distribution.
 3. Understand how the MF project integrates into the OpenMRS distribution.
-4. Set up a local dev environment for working on the FHIR module using the OpenMRS SDK.
-5. Set up a local dev environment for MF ESM modules.
+4. Set up a development environment for working on the FHIR module using the OpenMRS SDK.
+5. Set up a development environment for working on Microfrontend ES Modules.  
 
 ---
 
@@ -76,32 +72,43 @@ You should be able to see the following screens after a successful setup, all ru
 ## OpenMRS Architecture Overview
 http://devmanual.openmrs.org/en/Technology/architecture.html
 
-## OpenMRS FHIR Module Technical Review
+![OpenMRS Architecture](OpenMRS-architecture.png)
 
-Available here: https://github.com/uw-fhir/OpenMRS-FHIR-Webinars/blob/master/Webinar-3-MF-FHIR-Dev-Setup/tech-review.md
+OpenMRS is designed using a [Modular Architecture](http://devmanual.openmrs.org/en/Technology/architecture.html#the-modular-architecture) that allows for flexible customizations of functionality to fit the specific needs of the different [places that OpenMRS is used](http://devmanual.openmrs.org/en/Kick_off/openmrs_today.html). 
 
-#### SPA Module
-(coming soon)
+Today, we will be mostly working with the [OpenMRS Reference Application](https://github.com/openmrs/openmrs-distro-referenceapplication), which consists of the OpenMRS core application and a set of default modules that provide generic functionality. A list of the modules included in the Ref App can be found here: https://github.com/openmrs/openmrs-distro-referenceapplication/blob/master/package/src/main/resources/openmrs-distro.properties. To test out the functionality of the Ref App, you can take a look at the [OpenMRS Demo](https://openmrs.org/demo/). 
 
-## Microfrontends Architecture Overview
-https://talk.openmrs.org/t/an-amazing-future-for-openmrs/22328
-- https://talk.openmrs.org/t/micro-frontends-architecture-for-openmrs/22557
+**The OpenMRS FHIR Module**
+One of the modules that comes bundled with the reference application is the [OpenMRS FHIR Module](https://github.com/openmrs/openmrs-module-fhir). We will examine how to develop and deploy new features in this module. You can read more about the OpenMRS FHIR Module project on this [OpenMRS Wiki Page](https://wiki.openmrs.org/display/projects/OpenMRS+FHIR+Module). 
 
-### Import Map and Frontend Javascript Modules (ESM)
+If you're interested in getting further involved in this project, join the [OpenMRS FHIR Squad] and check out the `#fhir` channel on the [OpenMRS Slack](https://slack.openmrs.org/).
+
+[tech review](https://github.com/uw-fhir/OpenMRS-FHIR-Webinars/blob/master/Webinar-3-MF-FHIR-Dev-Setup/tech-review.md)
+
+**SPA Module**
+The second project we will focus on is the [Microfrontends Project](https://wiki.openmrs.org/display/projects/Frontend+-+SPA+and+Microfrontends). This excellent [OpenMRS Talk post](https://talk.openmrs.org/t/an-amazing-future-for-openmrs/22328) - and [this followup](https://talk.openmrs.org/t/micro-frontends-architecture-for-openmrs/22557) - give a great overview of the motivations behind the Microfrontends approach. The project is under current development by the [OpenMRS Microfrontend Squad](https:// wiki.openmrs.org/display/projects/Frontend+-+SPA+and+Microfrontends). 
+
+The [OpenMRS SPA module](https://github.com/openmrs/openmrs-module-spa) is not included with the Reference Application distribution, and we will have to deploy it to our OpenMRS instance using the [OpenMRS SDK](https://wiki.openmrs.org/display/docs/OpenMRS+SDK). 
+
+If you're interested in more information, you can join the `#microfrontend` channel on the [OpenMRS Slack](https://slack.openmrs.org/) and follow the development process on [Github](https://github.com/openmrs/openmrs-rfc-frontend).
+
+**The Import Map and Frontend Javascript Modules (ESM)**
 https://wiki.openmrs.org/display/projects/Frontend+Implementer+Documentation
 
 ## The Full Picture
 
-**What we would like to have on our local dev machine:**
+**At the end of this tutorial, your local development enviroment should look as follows:**
 
-- An OpenMRS server running the latest openMRS RefApp distribution.
-- A cloned FHIR module codebase that is compiled locally and used by the OpenMRS server.
-- A cloned SPA module codebase that is compiled locally and used by the OpenMRS server.
+- An OpenMRS server running the latest OpenMRS Referance Application distribution.
+- A cloned [OpenMRS FHIR module](https://github.com/openmrs/openmrs-module-fhir) codebase that is compiled locally and used by the OpenMRS server.
+- A cloned [OpenMRS SPA module](https://github.com/openmrs/openmrs-module-spa) codebase that is compiled locally and used by the OpenMRS server.
 - Cloned codebases for the FHIR and Home Microfrontend javascript modules that compile and are served up locally, and connect to the OpenMRS server using the mentioned SPA module. 
 
 ## Walkthrough Tutorial
-http://devmanual.openmrs.org/en/Technology/getSetUp.html
-https://wiki.openmrs.org/display/projects/Setup+local+development+environment+for+OpenMRS+SPA
+
+**Related Resources**
+- http://devmanual.openmrs.org/en/Technology/getSetUp.html
+- https://wiki.openmrs.org/display/projects/Setup+local+development+environment+for+OpenMRS+SPA
 
 ### 1. Install Dependencies
 
@@ -117,6 +124,7 @@ java version "1.8.0_221"
 Java(TM) SE Runtime Environment (build 1.8.0_221-b11)
 Java HotSpot(TM) 64-Bit Server VM (build 25.221-b11, mixed mode)
 ```
+
 **Maven**
 
 Install Maven:
@@ -253,7 +261,6 @@ https://wiki.openmrs.org/display/RES/Demo+Data
 
 
 **Test the Ref App:**
-
 > mvn openmrs-sdk:run -DserverId=openmrs-dev
 
 ```
@@ -352,6 +359,8 @@ Your modules page should look like this:
 ![OpenMRS Modules](webinar-3-openmrs-modules.png) 
 
 ### 6. Set up Microfrontends dev environment.
+
+**Related Resources**
 - https://wiki.openmrs.org/display/projects/Frontend+Implementer+Documentation
 - https://wiki.openmrs.org/display/projects/Setup+local+development+environment+for+OpenMRS+SPA
 - https://wiki.openmrs.org/pages/viewpage.action?pageId=224527568
