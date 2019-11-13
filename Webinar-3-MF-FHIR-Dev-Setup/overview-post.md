@@ -28,7 +28,8 @@ Video Tutorial: (coming soon)
     - [5. Build and deploy FHIR and SPA OpenMRS modules](#5-build-and-deploy-fhir-and-spa-openmrs-modules)
     - [6. Set up Microfrontends dev environment.](#6-set-up-microfrontends-dev-environment)
     - [7. Postman](#7-postman)
-    - [7. Test the Setup](#7-test-the-setup)
+    - [8. Test the Setup](#8-test-the-setup)
+  - [Webinar Questions](#webinar-questions)
   - [Additional Screenshots](#additional-screenshots)
   - [To-Do](#to-do)
   - [Notes](#notes)
@@ -402,28 +403,42 @@ In order to more easily send and analyse API requests to the local OpenMRS serve
 
 ![Postman Setup](postman-cookies-setup.png)
 
-### 7. Test the Setup
+### 8. Test the Setup
 
 **OpenMRS Reference Application**
-```
-```
+To test out our OpenMRS Ref App, we will create a patient using the UI. We will then use the built-in FHIR Client to send a `GET` request to our OpenMRS FHIR Server, and try to retrieve the created patient as a FHIR resource.
+
+*Prereq: Make sure Postman is running and capturing your browser cookies like explained [here](postman-cookies-setup.png)*
+
+1. `mvn openmrs-sdk:run -DserverId=openmrs-dev`
+   
+2. Open your browser and go to `localhost:8080/openmrs` and login as `admin\Admin123`
+
+3. Create a patient - be creative!
+   
+4. Note the UUID of the patient in the url
+      
+5. Check whether the FHIR module is installed correctly. You should be able to access the following resources: 
+      - http://localhost:8080/openmrs/module/fhir/rest/swagger.json
+      - http://localhost:8080/openmrs/module/fhir/apidocs.form#/default
+
+6. Go to `>Admin>AdvancedAdmin>FHIR Module`
+
+7. OpenMRS the FHIR Client and replace the patient id w/ your patient's uuid
+
+8. send the request and make sure you get the correct json FHIR resource representing your patient
+
+9. Copy the request url and create a Postman request using it. Make sure you're caputring the cookies!
+    
+
 
 **OpenMRS Microfrontend UI**
-```
-```
+To test out the Microfrontends setup, we'll use the config module to change the logo of the OpenMRS MF login screen. 
 
+## Webinar Questions
+*This is a list of questions that came up during the webinar, along with eventual answers/clarifications*
 
-**OpenMRS FHIR Module**
-https://wiki.openmrs.org/display/projects/FHIR+Swagger+Documentation
-
-If the FHIR module is installed correctly, you should be able to access the following resources after logging in as `admin\Admin123`:
-
-- http://localhost:8080/openmrs/module/fhir/rest/swagger.json
-- http://localhost:8080/openmrs/module/fhir/apidocs.form#/default
-
-
-```
-```
+(nothing here yet!)
 
 ## Additional Screenshots
 
@@ -446,3 +461,4 @@ If the FHIR module is installed correctly, you should be able to access the foll
 https://wiki.hl7.org/index.php?title=Using_the_FHIR_Validator
 
 Sample Data?
+''
