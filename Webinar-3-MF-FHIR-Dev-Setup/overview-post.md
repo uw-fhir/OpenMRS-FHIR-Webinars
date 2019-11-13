@@ -1,10 +1,9 @@
 
-*Check out the [Webinars Github Page](https://github.com/uw-fhir/OpenMRS-FHIR-Webinars/) for another view of these tutorial*
+*Check out the [Webinars Github Page](https://github.com/uw-fhir/OpenMRS-FHIR-Webinars/blob/master/Webinar-3-MF-FHIR-Dev-Setup/overview-post.md/) for another view of this tutorial*
 
 # Webinar 3 - OpenMRS Dev Setup for FHIR Module and Microfrontends
 
-Video Tutorial: (coming soon)
-
+Video: (coming soon)
 
 ## Outline
 - [Webinar 3 - OpenMRS Dev Setup for FHIR Module and Microfrontends](#webinar-3---openmrs-dev-setup-for-fhir-module-and-microfrontends)
@@ -90,7 +89,7 @@ The second project we will focus on is the [Microfrontends Project](https://wiki
 
 The [OpenMRS SPA module](https://github.com/openmrs/openmrs-module-spa) is not included with the Reference Application distribution, and we will have to deploy it to our OpenMRS instance using the [OpenMRS SDK](https://wiki.openmrs.org/display/docs/OpenMRS+SDK). 
 
-If you're interested in more information, you can join the `#microfrontend` channel on the [OpenMRS Slack](https://slack.openmrs.org/) and follow the development process on [Github](https://github.com/openmrs/openmrs-rfc-frontend).
+If you're interested in more information, you can join the `#microfrontend` channel on the [OpenMRS Slack](https://slack.openmrs.org/) and follow the development process on [Github](https://github.com/openmrs/openmrs-rfc-frontend) or on [OpenMRS Talk](https://talk.openmrs.org/t/micro-frontends-architecture-for-openmrs/22557/51).
 
 **The Import Map and Frontend Javascript Modules (ESM)**
 https://wiki.openmrs.org/display/projects/Frontend+Implementer+Documentation
